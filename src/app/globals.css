@@ -5,6 +5,10 @@
   --foreground: #171717;
 }
 
+@theme {
+  --color-testered: #875;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
