@@ -1,4 +1,5 @@
 import { Header } from "@/components/NavBar/Header";
+import { Footer } from "@/components/sections/Footer";
 import { S_AcessSped } from "@/components/sections/S_AcessSpeed";
 import { S_Badged } from "@/components/sections/S_Badged";
 import { S_home } from "@/components/sections/S_home";
@@ -12,6 +13,7 @@ export default function Home() {
       <S_Badged/>
       <S_AcessSped/>
       <S_Noticed/>
+      <Footer/>
     </div>
   );
 }
