@@ -3,7 +3,7 @@ import { Navbartop } from "../NavBar/NavBarTop";
 
 export function S_home() {
     return (
-        <section className="relative w-screen h-96 overflow-hidden">
+        <section className="relative h-96 overflow-hidden">
             <Navbartop/>
 
             <div className="absolute inset-0 z-0">
