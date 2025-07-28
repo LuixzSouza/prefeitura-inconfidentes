@@ -63,7 +63,7 @@ export function S_SocialMedia() {
   return (
     <section className="py-16 bg-white">
       <ContainerGrid>
-        <Heading_2 title="Redes Sociais" />
+        <Heading_2 title="Redes Sociais"/>
         
         <div className="flex gap-4 my-6">
           {socialTabs.map(tab => (
@@ -87,8 +87,8 @@ export function S_SocialMedia() {
           spaceBetween={24}
           breakpoints={{
             320: { slidesPerView: 1.2 },
-            640: { slidesPerView: 2 },
-            1024: { slidesPerView: 3 },
+            640: { slidesPerView: 3 },
+            1024: { slidesPerView: 4 },
           }}
           loop
           className="py-4"
