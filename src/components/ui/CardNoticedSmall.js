@@ -1,21 +1,23 @@
 import Image from "next/image";
 
-export function CardNoticedSmall({ text, img }) {
+export function CardNoticedSmall({ notice }) {
+    const { title, img, href } = notice;
     return (
-        <div className="flex items-center justify-center w-full max-w-80 shadow-sm shadow-black rounded-xl overflow-hidden">
-            <div className="flex-1 h-32 relative">
+        <a href={href} className="w-full flex items-center gap-4 group">
+            {/* Imagem */}
+            <div className="flex-shrink-0 w-24 h-20 rounded-lg overflow-hidden">
                 <Image
-                    alt="Imagem de Notícias"
+                    alt={title}
                     src={img}
-                    fill
-                    className="object-cover"
+                    width={96}
+                    height={80}
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                 />
             </div>
-            <div className="p-5 w-1/2">
-                <p className="text-xs text-verde-claro font-bold">
-                    {text}
-                </p>
-            </div>
-        </div>
+            {/* Título */}
+            <h4 className="font-semibold text-sm text-gray-700 leading-tight group-hover:text-green-800 transition-colors">
+                {title}
+            </h4>
+        </a>
     );
 }

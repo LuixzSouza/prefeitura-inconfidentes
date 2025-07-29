@@ -1,3 +1,5 @@
+// SEU ARQUIVO: S_Localization.js (Com o novo design aplicado)
+
 "use client";
 import { ContainerGrid } from "../layout/ContainerGrid";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -8,6 +10,14 @@ import "swiper/css/pagination";
 import { Heading_2 } from "../font/Heading_2";
 import Image from "next/image";
 
+// --- Ícones para a seção de informações (Exemplo usando Heroicons) ---
+const InfoIcon = ({ children }) => (
+  <div className="flex-shrink-0 bg-green-100 text-green-800 rounded-full p-2">
+    {children}
+  </div>
+);
+
+// --- Dados (mantidos como antes) ---
 const images = [
   "https://inconfidentes.mg.gov.br/wp-content/uploads/2022/04/1.jpg",
   "https://inconfidentes.mg.gov.br/wp-content/uploads/2022/04/2.jpg",
@@ -22,91 +32,129 @@ const images = [
   "https://inconfidentes.mg.gov.br/wp-content/uploads/2022/04/Design_sem_nome_33.png",
 ];
 
+const facts = [
+    { icon: <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M4.5 10.5L12 3m0 0l7.5 7.5M12 3v18" /></svg>, label: "Altitude", value: "869 m" },
+    { icon: <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" /></svg>, label: "Gentílico", value: "Inconfidentense" },
+    { icon: <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 21v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21m0 0h4.5V3.545M12.75 21h7.5V10.75M2.25 21h1.5m18 0h-18M2.25 9l4.5-1.636M18.75 3l-1.5.545m0 6.205l3 1m-3-1l-3-1m-3 1l-3 1m-3-1l3-1.091m0 0l4.5 1.636m10.5-1.182l-3-1.091M12 5.25v2.25m0 0l-3 1m3-1l3 1" /></svg>, label: "Área total", value: "145,40 km²" },
+    { icon: <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0h18" /></svg>, label: "Fundação", value: "30/12/1962" },
+    { icon: <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-2.087-5.038.75.75 0 00-.62-1.095 3.75 3.75 0 00-7.233 2.33A4.5 4.5 0 002.25 15z" /></svg>, label: "Clima", value: "Tropical de altitude" },
+    { icon: <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-4.67c.12-.241.252-.477.388-.702m-8.655 4.67c.594.594 1.453.945 2.387.945a3.747 3.747 0 002.748-1.228" /></svg>, label: "População", value: "7.358 (IBGE 2020)" },
+];
+
+
 export function S_Localization() {
   return (
-    <section className="bg-white py-16">
+    <section className="bg-white py-20 md:py-28">
       <ContainerGrid>
-        <div className="flex justify-between items-center mb-6">
-          <Heading_2 title={"Conheça Inconfidentes"} />
-          <button className="text-sm text-green-800 font-medium hover:underline">
-            Conhecer +
-          </button>
-        </div>
-
-        <div className="bg-green-100 p-6 rounded-lg mb-8 flex flex-col lg:flex-row gap-6">
-          <div className="flex-1">
-            <p className="text-sm text-gray-800 leading-relaxed">
-              Inconfidentes está localizada no Sul de Minas Gerais, a 869 metros de altitude,
-              com clima tropical de altitude e uma população estimada em 7.358 habitantes.
-              Reconhecida por suas belas paisagens, serras e cursos d’água como o Rio Mogi Guaçu,
-              o município é marcado por relevo acidentado, solo fértil e grande diversidade biológica.
+        {/* --- Bloco de Informações --- */}
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 mb-24">
+          <div className="lg:col-span-3">
+            <Heading_2 title={"Conheça Inconfidentes"} />
+            <p className="mt-4 text-gray-600 leading-relaxed">
+              Localizada no Sul de Minas Gerais, Inconfidentes é um refúgio a 869 metros de altitude, 
+              marcado por um agradável clima tropical, paisagens de serras e a riqueza do Rio Mogi Guaçu. 
+              Com uma população acolhedora de 7.358 habitantes, a cidade preserva as tradições mineiras e a forte ligação com o campo.
               <br /><br />
-              Seus moradores e cultura estão fortemente ligados ao campo, às tradições mineiras e à hospitalidade do povo.
-              Inconfidentes faz limite com Bueno Brandão, Ouro Fino, Borda da Mata e Bom Repouso, e está a apenas 188 km da capital paulista,
-              sendo um destino acolhedor, produtivo e cheio de potencial.
+              A apenas 188 km de São Paulo, o município é um destino cheio de potencial, ideal para quem busca tranquilidade,
+              contato com a natureza e a hospitalidade de seu povo.
             </p>
           </div>
-
-          <div className="grid grid-cols-2 gap-4 text-sm text-white">
-            <div className="bg-green-600 p-3 rounded">Altitude: 869 m</div>
-            <div className="bg-green-600 p-3 rounded">Gentílico: Inconfidentense</div>
-            <div className="bg-green-600 p-3 rounded">Área total: 145,40 km²</div>
-            <div className="bg-green-600 p-3 rounded">Fundação: 30/12/1962</div>
-            <div className="bg-green-600 p-3 rounded">Clima: Tropical</div>
-            <div className="bg-green-600 p-3 rounded">População: 7.358 (IBGE 2020)</div>
+          <div className="lg:col-span-2">
+            <ul className="space-y-4 grid grid-cols-2">
+              {facts.map((fact, index) => (
+                <li key={index} className="flex items-center gap-4">
+                  <InfoIcon>{fact.icon}</InfoIcon>
+                  <div>
+                    <span className="font-semibold text-gray-800">{fact.label}</span>
+                    <p className="text-gray-600 text-sm">{fact.value}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
-        {/* Swiper Carousel */}
-        <div className="mb-12">
-          <Swiper
-            modules={[Navigation, Pagination]}
-            spaceBetween={20}
-            slidesPerView={1.2}
-            navigation
-            pagination={{ clickable: true }}
-            breakpoints={{
-              640: { slidesPerView: 1.5 },
-              768: { slidesPerView: 2 },
-              1024: { slidesPerView: 3 },
-            }}
-            className="!pb-10"
-          >
-            {images.map((src, index) => (
-              <SwiperSlide key={index}>
-                <Image
-                  width={400} height={250}
-                  src={src}
-                  alt={`Imagem ${index + 1}`}
-                  className="rounded-lg w-full h-60 object-cover"
-                />
-              </SwiperSlide>
-            ))}
-          </Swiper>
+        {/* --- Galeria de Imagens com Swiper Personalizado --- */}
+        <div className="relative mb-24">
+            <Swiper
+                modules={[Navigation, Pagination]}
+                spaceBetween={20}
+                slidesPerView={1.2}
+                navigation={{
+                    nextEl: '.swiper-button-next-custom',
+                    prevEl: '.swiper-button-prev-custom',
+                }}
+                pagination={{ clickable: true, el: '.swiper-pagination-custom' }}
+                breakpoints={{
+                    640: { slidesPerView: 2.2 },
+                    1024: { slidesPerView: 3.5 },
+                }}
+                className="!p-1" // Padding para evitar corte na sombra
+            >
+                {images.map((src, index) => (
+                <SwiperSlide key={index}>
+                    <div className="rounded-xl overflow-hidden shadow-md transition-all duration-300 hover:shadow-2xl hover:scale-105">
+                        <Image
+                            width={400} height={250}
+                            src={src}
+                            alt={`Galeria de Imagens de Inconfidentes ${index + 1}`}
+                            className="w-full h-64 object-cover"
+                        />
+                    </div>
+                </SwiperSlide>
+                ))}
+            </Swiper>
+            {/* Controles de Navegação Personalizados */}
+            <div className="swiper-button-prev-custom absolute top-1/2 -translate-y-1/2 left-0 z-10 cursor-pointer bg-white/70 backdrop-blur-sm rounded-full p-2 shadow-md transition-opacity hover:bg-white disabled:opacity-0">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6 text-gray-800"><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
+            </div>
+            <div className="swiper-button-next-custom absolute top-1/2 -translate-y-1/2 right-0 z-10 cursor-pointer bg-white/70 backdrop-blur-sm rounded-full p-2 shadow-md transition-opacity hover:bg-white disabled:opacity-0">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6 text-gray-800"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+            </div>
+            {/* Paginação Personalizada */}
+            <div className="swiper-pagination-custom !relative !bottom-auto mt-8 flex justify-center gap-2"></div>
+            <style jsx global>{`
+                .swiper-pagination-custom .swiper-pagination-bullet {
+                    width: 10px;
+                    height: 10px;
+                    background-color: #d1d5db;
+                    opacity: 1;
+                    transition: background-color 0.3s, width 0.3s;
+                }
+                .swiper-pagination-custom .swiper-pagination-bullet-active {
+                    width: 25px;
+                    border-radius: 5px;
+                    background-color: #047857;
+                }
+            `}</style>
         </div>
 
-        {/* Mapa + Estátua */}
-        <div className="relative">
-          <Heading_2 title={"Mapa"}/>
-          <div className="relative rounded-lg overflow-hidden pt-12">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14764.022994127761!2d-46.3225986!3d-22.315622349999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c97ae3a99e1751%3A0x131d3c3e0e9da656!2sInconfidentes%2C%20MG%2C%2037576-000!5e0!3m2!1spt-BR!2sbr!4v1753643726144!5m2!1spt-BR!2sbr"
-              width="100%"
-              height="400"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              className="w-full rounded-lg pl-40"
-            ></iframe>
-
-            <Image
-              src="/images/peregrino.png"
-              alt="Estátua"
-              width={220}
-              height={800}
-              className="absolute bottom-0 left-0 -mb-2"
-            />
+        {/* --- Mapa + Estátua com Layout Robusto --- */}
+        <div className="bg-gray-50 p-4 sm:p-8 rounded-2xl">
+          <Heading_2 title={"Onde Estamos"} />
+          <div className="relative mt-6 grid grid-cols-1 md:grid-cols-3 h-[450px]">
+            {/* Coluna da Estátua */}
+            <div className="relative md:col-span-1 h-full hidden md:flex items-end justify-center">
+                <Image
+                    src="/images/peregrino.png"
+                    alt="Estátua do Peregrino - Caminho da Fé"
+                    width={220}
+                    height={800}
+                    className="absolute bottom-0 h-4/5 w-auto object-contain drop-shadow-2xl"
+                />
+            </div>
+            {/* Coluna do Mapa */}
+            <div className="md:col-span-2 w-full h-full rounded-xl overflow-hidden shadow-lg">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3704.832262174301!2d-46.39213568559904!3d-22.31327198522369!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c96a84462d2571%3A0x6b7e8f5c4a5c689!2sInconfidentes%2C%20MG%2C%2037576-000!5e0!3m2!1spt-BR!2sbr!4v1690000000000!5m2!1spt-BR!2sbr"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
+            </div>
           </div>
         </div>
       </ContainerGrid>
