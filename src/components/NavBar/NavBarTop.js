@@ -17,7 +17,7 @@ const infoPref = [
 const lai = [
   {
     txtLink: "Ouvidoria/SIC",
-    urlLink: "#",
+    urlLink: "/ouvidoria",
     about:
       "Canal direto para enviar sugestões, elogios, reclamações ou solicitações de informação pública.",
   },
@@ -39,6 +39,12 @@ const lai = [
     about:
       "Publicações oficiais com atos da administração pública, como nomeações, editais e avisos.",
   },
+  {
+  txtLink: "Webmail",
+  urlLink: "/webmail",
+  about:
+    "Acesso ao e-mail institucional exclusivo para servidores da prefeitura.",
+}
 ];
 
 export function Navbartop() {

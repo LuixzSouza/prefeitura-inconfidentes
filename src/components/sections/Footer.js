@@ -5,7 +5,7 @@ import { footerLinks } from "../data/footerLinks";
 
 export function Footer() {
   return (
-    <footer className="flex flex-col bg-gray-100 text-gray-800">
+    <footer className="mt-32 flex flex-col bg-gray-100 text-gray-800">
         <div className="flex items-center h-[530px]" >
             <div className="w-full flex flex-col md:flex-row justify-around gap-10">
                 {/* Coluna da logo + endereço */}

@@ -1,0 +1,155 @@
+// Este é o seu arquivo de schema Prisma.
+// Ele define os modelos de dados da sua aplicação.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// --- SEUS TIPOS ENUM PERSONALIZADOS ---
+
+enum nivel_acesso_enum {
+  admin
+  editor
+  publicador
+}
+
+enum status_usuario_enum {
+  ativo
+  inativo
+}
+
+enum status_publicacao_enum {
+  publicado
+  rascunho
+  agendado
+}
+
+enum tipo_vinculo_enum {
+  efetivo
+  comissionado
+  contratado
+}
+
+enum status_licitacao_enum {
+  aberta
+  em_andamento @map("em andamento") 
+  finalizada
+  suspensa
+  cancelada
+}
+
+enum tipo_legislacao_enum {
+  lei
+  decreto
+  portaria
+  resolucao
+}
+
+enum status_legislacao_enum {
+  em_vigor
+  revogada
+}
+
+// --- MODELOS (TABELAS) ---
+
+// Módulo de Controle de Acesso
+model usuarios {
+  id           Int                 @id @default(autoincrement())
+  nome         String              @db.VarChar(255)
+  email        String              @unique @db.VarChar(100)
+  senha        String              @db.VarChar(255)
+  nivel_acesso nivel_acesso_enum   @default(editor)
+  status       status_usuario_enum @default(ativo)
+  created_at   DateTime            @default(now())
+  updated_at   DateTime?           @updatedAt
+  noticias     noticias[]
+}
+
+// Módulo de Conteúdo
+model noticias {
+  id              Int                    @id @default(autoincrement())
+  titulo          String                 @db.VarChar(255)
+  subtitulo       String?                @db.VarChar(255)
+  conteudo        String
+  imagem_destaque String                 @db.VarChar(255)
+  slug            String                 @unique @db.VarChar(255)
+  data_publicacao DateTime
+  status          status_publicacao_enum @default(rascunho)
+  usuario_id      Int
+  created_at      DateTime               @default(now())
+  updated_at      DateTime?              @updatedAt
+  // Relacionamento com a tabela de usuários
+  usuario         usuarios               @relation(fields: [usuario_id], references: [id])
+
+  @@index([slug])
+  @@index([status])
+  @@index([data_publicacao])
+}
+
+// Módulo de Estrutura Administrativa
+model secretarias {
+  id                Int       @id @default(autoincrement())
+  nome              String    @db.VarChar(255)
+  sigla             String?   @db.VarChar(20)
+  responsavel_nome  String    @db.VarChar(255)
+  responsavel_cargo String    @default("Secretário(a) Municipal") @db.VarChar(100)
+  email             String?   @db.VarChar(100)
+  telefone          String?   @db.VarChar(20)
+  endereco          String?
+  atribuicoes       String?
+  // Lado "um" do relacionamento: uma secretaria tem muitas licitações
+  licitacoes        licitacoes[]
+}
+
+// Módulo de Transparência
+model licitacoes {
+  id            Int                   @id @default(autoincrement())
+  numero        String                @db.VarChar(50)
+  modalidade    String                @db.VarChar(100)
+  objeto        String
+  data_abertura DateTime
+  status        status_licitacao_enum @default(aberta)
+  secretaria_id Int
+  created_at    DateTime              @default(now())
+  updated_at    DateTime?             @updatedAt
+  // Lado "muitos" do relacionamento: uma licitação pertence a uma secretaria
+  secretaria    secretarias           @relation(fields: [secretaria_id], references: [id])
+  // Relacionamento com arquivos
+  arquivos      licitacao_arquivos[]
+
+  @@index([status])
+  @@index([modalidade])
+  @@map("licitacoes") // Garante que o nome da tabela no DB seja "licitacoes"
+}
+
+model licitacao_arquivos {
+  id             Int      @id @default(autoincrement())
+  licitacao_id   Int
+  titulo_arquivo String   @db.VarChar(255)
+  caminho_arquivo String   @db.VarChar(255)
+  data_upload    DateTime @default(now())
+  // Relacionamento com a licitação principal
+  licitacao      licitacoes @relation(fields: [licitacao_id], references: [id], onDelete: Cascade)
+
+  @@map("licitacao_arquivos")
+}
+
+model legislacao {
+  id              Int                    @id @default(autoincrement())
+  tipo            tipo_legislacao_enum
+  numero          Int
+  ano             Int
+  data_sancao     DateTime               @db.Date
+  ementa          String
+  caminho_arquivo String                 @db.VarChar(255)
+  status          status_legislacao_enum @default(em_vigor)
+
+  @@index([tipo])
+  @@index([ano])
+  @@map("legislacao")
+}
