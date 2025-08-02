@@ -23,13 +23,15 @@ export const publicacoes = [
 
 // Mapeamento dos tipos para os componentes de visualização
 // app/data/publicacoesData.js
+// Exemplo do arquivo '@/data/publicacoesData.js'
 export const viewMapping = {
-  'licitacoes': 'LicitacoesView',
-  'compras-diretas': 'LicitacoesView', // Compras diretas usarão a mesma tabela de licitações
-  'decretos': 'LeisEAtosView',
-  'leis': 'LeisEAtosView',
-  'portarias': 'LeisEAtosView',
-  'concursos-e-processos-seletivos': 'ConcursosView', // <<< ADICIONE ESTA LINHA
+    'leis': 'LeisEAtosView',
+    'decretos': 'LeisEAtosView',
+    'portarias': 'LeisEAtosView',
+    'resolucoes': 'LeisEAtosView',
+    'licitacoes': 'LicitacoesView',
+    'compras-diretas': 'LicitacoesView',
+    'concursos-e-processos-seletivos': 'ConcursosView' // Adicione esta linha
 };
 
 // Lista de tipos para a visualização de Leis e Atos

@@ -37,7 +37,7 @@ enum tipo_vinculo_enum {
 
 enum status_licitacao_enum {
   aberta
-  em_andamento @map("em andamento") 
+  em_andamento @map("em andamento")
   finalizada
   suspensa
   cancelada
@@ -51,8 +51,16 @@ enum tipo_legislacao_enum {
 }
 
 enum status_legislacao_enum {
-  em_vigor
+  em_vigor @map("em vigor") // <- adicione esta anotação para o mapeamento correto
   revogada
+}
+
+// Adicione este bloco ao seu schema.prisma
+enum status_concurso_enum {
+  aberto
+  em_andamento
+  finalizado
+  cancelado
 }
 
 // --- MODELOS (TABELAS) ---
@@ -152,4 +160,20 @@ model legislacao {
   @@index([tipo])
   @@index([ano])
   @@map("legislacao")
+}
+
+model concursos_processos_seletivos {
+  id              Int                   @id @default(autoincrement())
+  numero          String                @db.VarChar(50)
+  ano             Int
+  titulo          String                @db.VarChar(255)
+  descricao       String?
+  data_abertura   DateTime
+  status          status_concurso_enum  @default(aberto)
+  caminho_edital  String                @db.VarChar(255)
+  created_at      DateTime              @default(now())
+
+  @@index([status])
+  @@index([ano])
+  @@map("concursos_processos_seletivos") // Mapeia o nome do modelo para o nome da tabela no banco
 }

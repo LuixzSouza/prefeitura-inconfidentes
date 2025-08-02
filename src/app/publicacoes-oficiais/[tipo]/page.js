@@ -6,10 +6,48 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import { Header } from '@/components/NavBar/Header';
 import { Footer } from '@/components/sections/Footer';
-import Breadcrumbs from '@/components/ui/Breadcrumbs';
 import { viewMapping, tiposLeisEAtos, modalidadesLicitacao, situacoesLicitacao } from '@/data/publicacoesData';
 import { Search, Calendar, FileDown, ChevronLeft, ChevronRight, Download, FilterX, Eye, SearchX } from 'lucide-react';
 import Link from 'next/link';
+
+// --- NOVO COMPONENTE DE VISUALIZAÇÃO ---
+const ConcursosView = ({ items }) => {
+    // Você pode adicionar filtros aqui se precisar, como o LeisEAtosView
+    return (
+        <div className="bg-white rounded-xl shadow-sm border overflow-hidden">
+            <div className="overflow-x-auto">
+                <table className="w-full text-sm text-left">
+                    <thead className="bg-slate-50 text-slate-600 uppercase text-xs">
+                        <tr>
+                            <th className="p-4 font-semibold">Título</th>
+                            <th className="p-4 font-semibold">Número/Ano</th>
+                            <th className="p-4 font-semibold">Descrição</th>
+                            <th className="p-4 font-semibold">Abertura</th>
+                            <th className="p-4 font-semibold">Status</th>
+                            <th className="p-4 font-semibold text-center">Edital</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {items.map(item => (
+                            <tr key={item.id} className="border-t hover:bg-emerald-50/30">
+                                <td className="p-4 font-medium">{item.titulo}</td>
+                                <td className="p-4">{`${item.numero}/${item.ano}`}</td>
+                                <td className="p-4 max-w-md text-gray-700">{item.descricao}</td>
+                                <td className="p-4 whitespace-nowrap">{new Date(item.data_abertura).toLocaleDateString('pt-BR')}</td>
+                                <td className="p-4"><StatusBadge situacao={item.status} /></td>
+                                <td className="p-4 text-center">
+                                    <a href={item.caminho_edital} title="Baixar Edital" target="_blank" rel="noopener noreferrer" className="inline-block p-2 text-emerald-600 hover:text-white hover:bg-emerald-600 rounded-full transition-colors">
+                                        <Download size={20}/>
+                                    </a>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    );
+};
 
 // --- COMPONENTES AUXILIARES DE UI (RE-ADICIONADOS) ---
 const StatusBadge = ({ situacao }) => {
@@ -137,6 +175,7 @@ const PublicacoesListPage = () => {
         switch(viewComponentKey) {
             case 'LicitacoesView': return <LicitacoesView items={items} />;
             case 'LeisEAtosView': return <LeisEAtosView items={items} />;
+            case 'ConcursosView': return <ConcursosView items={items} />;
             default: return <EmptyState />;
         }
     }
@@ -144,7 +183,6 @@ const PublicacoesListPage = () => {
     return (
         <div className="bg-gray-50 min-h-screen">
             <Header />
-            <Breadcrumbs />
             <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
                 <div className="flex flex-wrap justify-between items-center gap-4 mb-8">
                     <h1 className="text-4xl font-bold text-gray-800">{pageTitle}</h1>
