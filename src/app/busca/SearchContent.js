@@ -47,7 +47,7 @@ const EmptyState = ({ query }) => {
     return (
         <div className="text-center py-16 px-6 bg-white rounded-lg shadow-sm border flex flex-col items-center">
             <SearchX size={48} className="mx-auto text-gray-400" />
-            <h2 className="mt-4 text-2xl font-bold text-gray-800">Nenhum resultado encontrado para "{query}"</h2>
+            <h2 className="mt-4 text-2xl font-bold text-gray-800">Nenhum resultado encontrado para `&quot;`{query}`&quot;`</h2>
             <p className="text-gray-600 mt-2">Tente refazer sua busca ou navegue pelas seções populares.</p>
             <div className='flex flex-wrap justify-center gap-2 mt-8'>
                 {popularLinks.map(link => (
