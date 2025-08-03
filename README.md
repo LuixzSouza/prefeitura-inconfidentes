@@ -46,3 +46,6 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 - npm install prisma --save-dev
 - npm install @prisma/client
 - npx prisma init
+- npm install next-auth bcryptjs
+- npm install react-hot-toast
+- npm install react-hook-form zod @hookform/resolvers

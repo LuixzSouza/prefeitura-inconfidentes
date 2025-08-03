@@ -23,13 +23,13 @@ const lai = [
   },
   {
     txtLink: "Transparência",
-    urlLink: "#",
+    urlLink: "/transparencia",
     about:
       "Acesso fácil a dados sobre gastos, contratos, servidores e outras informações públicas da gestão.",
   },
   {
     txtLink: "Legislação",
-    urlLink: "#",
+    urlLink: "/publicacoes-oficiais/leis",
     about:
       "Consulta de leis, decretos, portarias e outras normas oficiais do município.",
   },

@@ -1,117 +1,162 @@
-// app/painel/page.js
+"use client";
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { useSession, signOut } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 import { 
-    LayoutDashboard, Users, FileText, Megaphone, Settings, LogOut, 
-    FilePlus, PenSquare, ChevronRight, Newspaper, Building, Briefcase 
+    LayoutDashboard, Users, Newspaper, Building, Briefcase, Megaphone, LogOut,
+    FilePlus, ChevronRight, PenSquare, Wrench
 } from 'lucide-react';
+import { Header } from '@/components/NavBar/Header';
 
-// Dados simulados para o painel
-const stats = [
-    { label: 'Publicações Oficiais', value: '58', icon: <Newspaper /> },
-    { label: 'Departamentos', value: '12', icon: <Building /> },
-    { label: 'Secretarias', value: '3', icon: <Briefcase /> },
-    { label: 'Mensagens (Ouvidoria)', value: '7', icon: <Megaphone /> },
-];
+// --- FUNÇÃO AUXILIAR PARA FORMATAR DATAS ---
+// Transforma datas em texto relativo como "hoje", "ontem", "há 2 dias"
+const formatRelativeTime = (dateString) => {
+    const date = new Date(dateString);
+    const now = new Date();
+    const diffInSeconds = Math.floor((now - date) / 1000);
+    const diffInDays = Math.floor(diffInSeconds / 86400);
 
+    if (diffInDays === 0) return 'hoje';
+    if (diffInDays === 1) return 'ontem';
+    if (diffInDays < 7) return `há ${diffInDays} dias`;
+    
+    return date.toLocaleDateString('pt-BR');
+};
+
+// --- DADOS PARA OS CARDS DE GERENCIAMENTO ---
 const managementLinks = {
-    municipio: [
-        { href: '/municipio/sobre-o-municipio', text: 'Sobre o Município' },
-        { href: '/municipio/historia', text: 'História' },
-        { href: '/municipio/economia', text: 'Economia' },
-        { href: '/municipio/turismo-e-lazer', text: 'Turismo e Lazer' },
+    conteudo: [
+        { href: '/painel/noticias', text: 'Gerenciar Notícias', icon: <Newspaper/> },
+        { href: '#', text: 'Gerenciar Eventos', icon: <Megaphone/> },
+        { href: '#', text: 'Gerenciar Páginas', icon: <FilePlus/> },
     ],
     governo: [
-        { href: '/governo/prefeito', text: 'Prefeito' },
-        { href: '/governo/vice-prefeito', text: 'Vice-Prefeito' },
-        { href: '/governo/secretarias', text: 'Secretarias' },
-        { href: '/governo/galeria-prefeitos', text: 'Galeria de Prefeitos' },
+        { href: '#', text: 'Prefeito e Vice' },
+        { href: '#', text: 'Secretarias' },
+        { href: '#', text: 'Galeria de Prefeitos' },
     ],
     servicos: [
-        { href: '/telefones-uteis', text: 'Telefones Úteis' },
-        { href: '/ouvidoria', text: 'Ouvidoria' },
-        { href: '/transparencia', text: 'Portal da Transparência' },
+        { href: '#', text: 'Telefones Úteis' },
+        { href: '#', text: 'Ouvidoria' },
+        { href: '#', text: 'Portal da Transparência' },
     ]
 };
 
-const recentActivities = [
-    { text: 'Novo Decreto Municipal publicado.', time: 'há 2 horas' },
-    { text: 'Página "Economia" foi atualizada.', time: 'há 5 horas' },
-    { text: 'Nova licitação adicionada.', time: 'ontem' },
-    { text: 'Respondida manifestação da Ouvidoria.', time: 'ontem' },
-];
-
-// --- COMPONENTE DA PÁGINA ---
+// ======================================================
+// --- COMPONENTE PRINCIPAL DA PÁGINA ---
+// ======================================================
 const PainelControlePage = () => {
-  return (
-    <div className="min-h-screen bg-slate-100">
-      {/* Topo do Painel */}
-      <header className="bg-white shadow-sm sticky top-0 z-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between items-center py-3">
-                <div className="flex items-center gap-3">
-                    <LayoutDashboard className="text-emerald-600" />
-                    <h1 className="text-xl font-bold text-gray-800">Painel Administrativo</h1>
-                </div>
-                <div className="flex items-center gap-4">
-                    <span className="text-sm text-gray-600 hidden sm:block">Bem-vindo, **Administrador**</span>
-                    <Link href="/" className="p-2 rounded-full hover:bg-gray-200" title="Sair do Painel">
-                        <LogOut size={20} className="text-gray-600" />
-                    </Link>
-                </div>
-            </div>
-        </div>
-      </header>
+    const { data: session, status } = useSession();
+    const router = useRouter();
+    
+    const [stats, setStats] = useState(null);
+    const [recentActivities, setRecentActivities] = useState([]);
 
-      {/* Conteúdo Principal */}
-      <main className="container mx-auto p-4 sm:p-6 lg:p-8">
-        {/* Seção de Estatísticas */}
-        <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            {stats.map(stat => <StatCard key={stat.label} {...stat} />)}
-        </section>
+    useEffect(() => {
+        if (status === 'unauthenticated') {
+            router.replace('/webmail');
+        }
+        
+        if (status === 'authenticated') {
+            const fetchData = async () => {
+                try {
+                    const response = await fetch('/api/painel/stats');
+                    if (!response.ok) throw new Error('Falha ao buscar dados');
+                    const data = await response.json();
+                    
+                    setStats(data.stats);
+                    setRecentActivities(data.recentesNoticias);
+                } catch (error) {
+                    console.error("Erro ao carregar dados do painel:", error);
+                }
+            };
+            fetchData();
+        }
+    }, [status, router]);
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Coluna Principal */}
-            <div className="lg:col-span-2 space-y-8">
-                <ManagementCard title="Gerenciar O Município" links={managementLinks.municipio} />
-                <ManagementCard title="Gerenciar O Governo" links={managementLinks.governo} />
-                <ManagementCard title="Gerenciar Serviços" links={managementLinks.servicos} />
-            </div>
+    if (status === 'loading' || !stats) {
+        return <div className="min-h-screen flex items-center justify-center bg-slate-50">Carregando Painel...</div>;
+    }
+    
+    if (status !== 'authenticated') {
+        return null;
+    }
 
-            {/* Coluna Lateral */}
-            <aside className="space-y-8">
-                {/* Ações Rápidas */}
-                <div className="bg-white p-6 rounded-xl shadow-sm border">
-                    <h2 className="text-lg font-bold text-gray-800 mb-4">Ações Rápidas</h2>
-                    <div className="space-y-3">
-                        <QuickAction href="/publicacoes-oficiais" text="Nova Publicação" icon={<FilePlus />} />
-                        <QuickAction href="/ouvidoria" text="Ver Mensagens" icon={<Megaphone />} />
-                        <QuickAction href="#" text="Gerenciar Usuários" icon={<Users />} />
+    return (
+        <div className="min-h-screen bg-slate-100">
+            <header className="bg-white shadow-sm sticky top-0 z-20">
+              <div className="flex justify-between items-center py-3 container mx-auto px-4 sm:px-6 lg:px-8">
+                  <div className="flex items-center gap-3">
+                      <LayoutDashboard className="text-emerald-600" />
+                      <h1 className="text-xl font-bold text-gray-800">Painel Administrativo</h1>
+                  </div>
+                  <div className="flex items-center gap-4">
+                      <span className="text-sm text-gray-600 hidden sm:block">
+                          Bem-vindo, <strong>{session?.user?.name || 'Usuário'}</strong>
+                      </span>
+                      <button onClick={() => signOut({ callbackUrl: '/' })} className="p-2 rounded-full hover:bg-gray-200" title="Sair do Painel">
+                          <LogOut size={20} className="text-gray-600" />
+                      </button>
+                  </div>
+              </div>
+            </header>
+            
+            <main className="container mx-auto p-4 sm:p-6 lg:p-8">
+                <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                    <StatCard icon={<Newspaper/>} label="Notícias Publicadas" value={stats.noticias} />
+                    <StatCard icon={<Briefcase/>} label="Licitações Abertas" value={stats.licitacoes} />
+                    <StatCard icon={<Building/>} label="Secretarias" value={stats.secretarias} />
+                    <StatCard icon={<Megaphone/>} label="Chamados Abertos" value={stats.ouvidoria} />
+                </section>
+                
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div className="lg:col-span-2 space-y-8">
+                        {/* Cards de Gerenciamento Reintegrados */}
+                        <ManagementCard title="Gerenciar Conteúdo" links={managementLinks.conteudo} />
+                        <ManagementCard title="Gerenciar Estrutura do Governo" links={managementLinks.governo} />
+                        <ManagementCard title="Gerenciar Serviços e Transparência" links={managementLinks.servicos} />
                     </div>
+
+                    <aside className="space-y-8">
+                        <div className="bg-white p-6 rounded-xl shadow-sm border">
+                            <h2 className="text-lg font-bold text-gray-800 mb-4">Ações Rápidas</h2>
+                            <div className="space-y-3">
+                                <QuickAction href="/painel/noticias/novo" text="Escrever Nova Notícia" icon={<PenSquare />} />
+                                <QuickAction href="/publicacoes-oficiais" text="Nova Publicação Oficial" icon={<FilePlus />} />
+                                {session?.user?.role === 'admin' && (
+                                    <QuickAction href="/painel/usuarios" text="Gerenciar Usuários" icon={<Users />} />
+                                )}
+                            </div>
+                        </div>
+                        
+                        <div className="bg-white p-6 rounded-xl shadow-sm border">
+                            <h2 className="text-lg font-bold text-gray-800 mb-4">Atividade Recente</h2>
+                            <ul className="space-y-4">
+                                {recentActivities.map(activity => (
+                                    <li key={activity.id} className="flex justify-between items-center text-sm">
+                                        <span className="text-gray-700 truncate pr-4">{activity.titulo}</span>
+                                        <span className="text-gray-500 flex-shrink-0 font-medium">
+                                            {formatRelativeTime(activity.data_publicacao)}
+                                        </span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </aside>
                 </div>
-                {/* Atividade Recente */}
-                <div className="bg-white p-6 rounded-xl shadow-sm border">
-                    <h2 className="text-lg font-bold text-gray-800 mb-4">Atividade Recente</h2>
-                    <ul className="space-y-3">
-                        {recentActivities.map(activity => (
-                            <li key={activity.text} className="flex justify-between items-center text-sm">
-                                <span className="text-gray-700">{activity.text}</span>
-                                <span className="text-gray-400">{activity.time}</span>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            </aside>
+            </main>
         </div>
-      </main>
-    </div>
-  );
+    );
 };
 
-// --- Sub-componentes do Painel ---
+
+// ======================================================
+// --- SUB-COMPONENTES DO PAINEL ---
+// ======================================================
 const StatCard = ({ icon, label, value }) => (
-    <div className="bg-white p-5 rounded-xl shadow-sm border flex items-center gap-4">
+    <div className="bg-white p-5 rounded-xl shadow-sm border flex items-center gap-4 hover:shadow-md transition-shadow">
         <div className="bg-emerald-100 text-emerald-600 p-3 rounded-full">
             {React.cloneElement(icon, { size: 24 })}
         </div>
@@ -127,9 +172,13 @@ const ManagementCard = ({ title, links }) => (
         <h2 className="text-lg font-bold text-gray-800 mb-4">{title}</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {links.map(link => (
-                <Link key={link.href} href={link.href} className="flex justify-between items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-                    <span className="font-medium text-gray-700">{link.text}</span>
-                    <ChevronRight size={18} className="text-gray-400" />
+                // A correção é nesta linha 👇
+                <Link key={link.text} href={link.href} className="flex justify-between items-center p-3 bg-slate-50 rounded-lg hover:bg-slate-100 transition-colors group">
+                    <div className="flex items-center gap-3">
+                        {link.icon && React.cloneElement(link.icon, { size: 18, className: "text-gray-500 group-hover:text-emerald-600" })}
+                        <span className="font-medium text-gray-700">{link.text}</span>
+                    </div>
+                    <ChevronRight size={18} className="text-gray-400 group-hover:text-emerald-600" />
                 </Link>
             ))}
         </div>
@@ -137,7 +186,7 @@ const ManagementCard = ({ title, links }) => (
 );
 
 const QuickAction = ({ href, text, icon }) => (
-    <Link href={href} className="w-full flex items-center gap-3 p-3 text-white font-semibold bg-emerald-600 rounded-lg hover:bg-emerald-700 transition-colors">
+    <Link href={href} className="w-full flex items-center gap-3 p-3 text-white font-semibold bg-emerald-600 rounded-lg hover:bg-emerald-700 transition-colors shadow-sm hover:shadow-md">
         {React.cloneElement(icon, { size: 20 })}
         {text}
     </Link>

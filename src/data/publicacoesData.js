@@ -31,7 +31,8 @@ export const viewMapping = {
     'resolucoes': 'LeisEAtosView',
     'licitacoes': 'LicitacoesView',
     'compras-diretas': 'LicitacoesView',
-    'concursos-e-processos-seletivos': 'ConcursosView' // Adicione esta linha
+    'concursos-e-processos-seletivos': 'ConcursosView',
+    'diario-oficial': 'DiarioOficialView'
 };
 
 // Lista de tipos para a visualização de Leis e Atos

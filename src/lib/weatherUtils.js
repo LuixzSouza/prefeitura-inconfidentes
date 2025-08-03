@@ -36,8 +36,8 @@ export const formatTime = (date) => {
 }
 
 export const getBgColor = (temp) => {
-  if (temp >= 35) return "rgba(255, 77, 77, 0.6)";   // Muito quente
-  if (temp >= 28) return "rgba(255, 204, 0, 0.6)";  // Quente
-  if (temp >= 20) return "rgba(254, 246, 143, 0.6)";// Agradável
-  return "rgba(179, 217, 255, 0.6)";               // Frio
+  if (temp >= 35) return "rgba(255, 77, 77, 0.15)";   // Muito quente
+  if (temp >= 28) return "rgba(255, 204, 0, 0.15)";  // Quente
+  if (temp >= 20) return "rgba(254, 246, 143, 0.15)";// Agradável
+  return "rgba(179, 217, 255, 0.2)";               // Frio
 };

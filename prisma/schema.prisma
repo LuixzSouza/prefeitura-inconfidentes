@@ -51,21 +51,35 @@ enum tipo_legislacao_enum {
 }
 
 enum status_legislacao_enum {
-  em_vigor @map("em vigor") // <- adicione esta anotação para o mapeamento correto
+  em_vigor @map("em vigor")
   revogada
 }
 
-// Adicione este bloco ao seu schema.prisma
+enum tipo_manifestacao_enum {
+  sugestao
+  reclamacao
+  elogio
+  denuncia
+  informacao
+}
+
+enum status_solicitacao_enum {
+  aberto
+  em_analise @map("em_analise")
+  respondido
+  fechado
+}
+
 enum status_concurso_enum {
   aberto
-  em_andamento
+  em_andamento @map("em_andamento")
   finalizado
   cancelado
 }
 
 // --- MODELOS (TABELAS) ---
 
-// Módulo de Controle de Acesso
+// Módulo 5: Controle de Acesso
 model usuarios {
   id           Int                 @id @default(autoincrement())
   nome         String              @db.VarChar(255)
@@ -78,7 +92,33 @@ model usuarios {
   noticias     noticias[]
 }
 
-// Módulo de Conteúdo
+// Módulo 2: Estrutura Administrativa
+model secretarias {
+  id                    Int                       @id @default(autoincrement())
+  nome                  String                    @db.VarChar(255)
+  sigla                 String?                   @db.VarChar(20)
+  responsavel_nome      String                    @db.VarChar(255)
+  responsavel_cargo     String                    @default("Secretário(a) Municipal") @db.VarChar(100)
+  email                 String?                   @db.VarChar(100)
+  telefone              String?                   @db.VarChar(20)
+  endereco              String?
+  atribuicoes           String?
+  servidores            servidores[]
+  licitacoes            licitacoes[]
+  ouvidoria_solicitacoes ouvidoria_solicitacoes[]
+}
+
+model servidores {
+  id            Int               @id @default(autoincrement())
+  nome          String            @db.VarChar(255)
+  cargo         String            @db.VarChar(100)
+  tipo_vinculo  tipo_vinculo_enum
+  secretaria_id Int
+  data_admissao DateTime          @db.Date
+  secretaria    secretarias       @relation(fields: [secretaria_id], references: [id])
+}
+
+// Módulo 1: Conteúdo Principal
 model noticias {
   id              Int                    @id @default(autoincrement())
   titulo          String                 @db.VarChar(255)
@@ -91,7 +131,6 @@ model noticias {
   usuario_id      Int
   created_at      DateTime               @default(now())
   updated_at      DateTime?              @updatedAt
-  // Relacionamento com a tabela de usuários
   usuario         usuarios               @relation(fields: [usuario_id], references: [id])
 
   @@index([slug])
@@ -99,22 +138,26 @@ model noticias {
   @@index([data_publicacao])
 }
 
-// Módulo de Estrutura Administrativa
-model secretarias {
-  id                Int       @id @default(autoincrement())
-  nome              String    @db.VarChar(255)
-  sigla             String?   @db.VarChar(20)
-  responsavel_nome  String    @db.VarChar(255)
-  responsavel_cargo String    @default("Secretário(a) Municipal") @db.VarChar(100)
-  email             String?   @db.VarChar(100)
-  telefone          String?   @db.VarChar(20)
-  endereco          String?
-  atribuicoes       String?
-  // Lado "um" do relacionamento: uma secretaria tem muitas licitações
-  licitacoes        licitacoes[]
+model paginas {
+  id         Int       @id @default(autoincrement())
+  titulo     String    @db.VarChar(255)
+  conteudo   String
+  slug       String    @unique @db.VarChar(255)
+  updated_at DateTime? @updatedAt
 }
 
-// Módulo de Transparência
+model eventos {
+  id                Int       @id @default(autoincrement())
+  titulo            String    @db.VarChar(255)
+  descricao         String
+  data_inicio       DateTime
+  data_fim          DateTime?
+  local             String    @db.VarChar(255)
+  imagem_divulgacao String?   @db.VarChar(255)
+  created_at        DateTime  @default(now())
+}
+
+// Módulo 3: Transparência e Legislação
 model licitacoes {
   id            Int                   @id @default(autoincrement())
   numero        String                @db.VarChar(50)
@@ -125,26 +168,20 @@ model licitacoes {
   secretaria_id Int
   created_at    DateTime              @default(now())
   updated_at    DateTime?             @updatedAt
-  // Lado "muitos" do relacionamento: uma licitação pertence a uma secretaria
   secretaria    secretarias           @relation(fields: [secretaria_id], references: [id])
-  // Relacionamento com arquivos
   arquivos      licitacao_arquivos[]
 
   @@index([status])
   @@index([modalidade])
-  @@map("licitacoes") // Garante que o nome da tabela no DB seja "licitacoes"
 }
 
 model licitacao_arquivos {
-  id             Int      @id @default(autoincrement())
-  licitacao_id   Int
-  titulo_arquivo String   @db.VarChar(255)
+  id              Int      @id @default(autoincrement())
+  licitacao_id    Int
+  titulo_arquivo  String   @db.VarChar(255)
   caminho_arquivo String   @db.VarChar(255)
-  data_upload    DateTime @default(now())
-  // Relacionamento com a licitação principal
-  licitacao      licitacoes @relation(fields: [licitacao_id], references: [id], onDelete: Cascade)
-
-  @@map("licitacao_arquivos")
+  data_upload     DateTime @default(now())
+  licitacao       licitacoes @relation(fields: [licitacao_id], references: [id], onDelete: Cascade)
 }
 
 model legislacao {
@@ -159,21 +196,68 @@ model legislacao {
 
   @@index([tipo])
   @@index([ano])
-  @@map("legislacao")
+}
+
+// MODELO ADICIONADO
+model diario_oficial {
+  id              Int       @id @default(autoincrement())
+  edicao_numero   Int
+  data_publicacao DateTime  @db.Date
+  descricao       String?
+  caminho_arquivo String    @db.VarChar(255)
+  created_at      DateTime  @default(now())
+
+  @@index([data_publicacao])
+  @@map("diario_oficial")
 }
 
 model concursos_processos_seletivos {
-  id              Int                   @id @default(autoincrement())
-  numero          String                @db.VarChar(50)
-  ano             Int
-  titulo          String                @db.VarChar(255)
-  descricao       String?
-  data_abertura   DateTime
-  status          status_concurso_enum  @default(aberto)
-  caminho_edital  String                @db.VarChar(255)
-  created_at      DateTime              @default(now())
+  id             Int                  @id @default(autoincrement())
+  numero         String               @db.VarChar(50)
+  ano            Int
+  titulo         String               @db.VarChar(255)
+  descricao      String?
+  data_abertura  DateTime
+  status         status_concurso_enum @default(aberto)
+  caminho_edital String               @db.VarChar(255)
+  created_at     DateTime             @default(now())
 
   @@index([status])
   @@index([ano])
-  @@map("concursos_processos_seletivos") // Mapeia o nome do modelo para o nome da tabela no banco
+  @@map("concursos_processos_seletivos")
+}
+
+// Módulo 4: Interação e Serviços
+model galerias {
+  id          Int      @id @default(autoincrement())
+  titulo      String   @db.VarChar(255)
+  descricao   String?
+  data_evento DateTime @db.Date
+  created_at  DateTime @default(now())
+  fotos       fotos[]
+}
+
+model fotos {
+  id             Int      @id @default(autoincrement())
+  galeria_id     Int
+  caminho_imagem String   @db.VarChar(255)
+  legenda        String?  @db.VarChar(255)
+  galeria        galerias @relation(fields: [galeria_id], references: [id], onDelete: Cascade)
+}
+
+model ouvidoria_solicitacoes {
+  id                    Int                      @id @default(autoincrement())
+  protocolo             String                   @unique @db.VarChar(20)
+  nome_cidadao          String                   @db.VarChar(255)
+  email_cidadao         String                   @db.VarChar(100)
+  telefone_cidadao      String?                  @db.VarChar(20)
+  tipo_manifestacao     tipo_manifestacao_enum
+  assunto               String                   @db.VarChar(255)
+  mensagem              String
+  secretaria_destino_id Int?
+  status                status_solicitacao_enum  @default(aberto)
+  created_at            DateTime                 @default(now())
+  secretaria_destino    secretarias?             @relation(fields: [secretaria_destino_id], references: [id], onDelete: SetNull)
+
+  @@map("ouvidoria_solicitacoes")
 }

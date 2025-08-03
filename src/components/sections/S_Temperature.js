@@ -15,7 +15,7 @@ import { weatherCodeMap, weatherIconMap, formatDate, getBgColor, formatTime } fr
 // --- Subcomponente: Card Principal (Design Renovado) ---
 const MainWeatherCard = ({ current, daily }) => (
   <div
-    className="relative w-full min-h-[28rem] flex flex-col md:flex-row items-center justify-between text-white rounded-3xl overflow-hidden my-8 p-6 md:p-10 gap-8"
+    className="relative w-full min-h-[38rem] flex flex-col md:flex-row items-center justify-between text-white rounded-3xl overflow-hidden my-8 p-6 md:p-10 gap-8"
     style={{ backgroundImage: 'url("/images/bgTemperature.jpg")', backgroundSize: 'cover', backgroundPosition: 'center' }}
   >
     {/* Overlay de cor dinâmica com base na temperatura */}

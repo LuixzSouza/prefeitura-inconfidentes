@@ -18,9 +18,10 @@ export const listNav = [
     linkTxt: "O Governo",
     linkUrl: "#", // Apenas abre o menu
     dropdown: [
-        { icon: "prefeitos", title: "Prefeito", description: "Informações, contato e biografia do chefe do executivo.", url: "/governo/prefeito" },
-        { icon: "prefeitos", title: "Vice-Prefeito", description: "Conheça o vice-prefeito e suas atribuições.", url: "/governo/vice-prefeito" },
-        { icon: "secretarias", title: "Secretarias", description: "Navegue pela estrutura administrativa e seus secretários.", url: "/governo/secretarias" },
+      { icon: "prefeitos", title: "Prefeito", description: "Informações, contato e biografia do chefe do executivo.", url: "/governo/prefeito" },
+      { icon: "prefeitos", title: "Vice-Prefeito", description: "Conheça o vice-prefeito e suas atribuições.", url: "/governo/vice-prefeito" },
+      { icon: "secretarias", title: "Secretarias", description: "Navegue pela estrutura administrativa e seus secretários.", url: "/governo/secretarias" },
+      { icon: "caderno", title: "Agenda do Prefeito", description: "Acompanhe os compromissos e eventos do prefeito.", url: "/governo/prefeito/agenda" },
     ],
   },
   {
