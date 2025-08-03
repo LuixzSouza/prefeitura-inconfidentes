@@ -58,7 +58,7 @@ const PrefeitoPage = () => {
               {/* Citação / Missão */}
               <blockquote className="border-l-4 border-emerald-500 pl-4">
                 <p className="text-lg italic text-gray-700">
-                  "Compromisso com uma gestão transparente, honesta e planejada, respeitando o orçamento público e garantindo o uso responsável dos recursos para transformar Inconfidentes."
+                  `&quot;`Compromisso com uma gestão transparente, honesta e planejada, respeitando o orçamento público e garantindo o uso responsável dos recursos para transformar Inconfidentes.`&quot;`
                 </p>
               </blockquote>
 

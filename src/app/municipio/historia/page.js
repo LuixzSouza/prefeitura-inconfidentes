@@ -34,7 +34,7 @@ const HistoriaPage = () => {
             date="Primórdios"
             title="As Origens Bandeirantes"
           >
-            Os primeiros habitantes da região foram os bandeirantes, que se instalaram às margens do Rio Mogi Guaçu em busca de ouro. Com a mineração não prosperando, o povoado, então chamado "Mogi Acima", voltou-se para a agricultura.
+            Os primeiros habitantes da região foram os bandeirantes, que se instalaram às margens do Rio Mogi Guaçu em busca de ouro. Com a mineração não prosperando, o povoado, então chamado `&quot;`Mogi Acima`&quot;`, voltou-se para a agricultura.
           </TimelineItem>
 
           {/* Item: Fundação do Núcleo Colonial */}

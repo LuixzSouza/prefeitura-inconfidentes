@@ -72,7 +72,7 @@ const SobreMunicipioPage = () => {
              {/* Limites */}
             <CardSection icon={<MapPin size={24} />} title="Posição e Limites">
               <p>
-                Situada nas coordenadas 22° 19' 00" S e 46° 19' 40" W, Inconfidentes faz divisa com os municípios de Bueno Brandão, Ouro Fino, Borda da Mata e Bom Repouso. A cidade está a apenas 10,8 km de Ouro Fino.
+                Situada nas coordenadas 22° 19`&apos;` 00`&quot;` S e 46° 19`&apos;` 40`&quot;` W, Inconfidentes faz divisa com os municípios de Bueno Brandão, Ouro Fino, Borda da Mata e Bom Repouso. A cidade está a apenas 10,8 km de Ouro Fino.
               </p>
             </CardSection>
 

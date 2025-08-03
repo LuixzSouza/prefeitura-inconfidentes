@@ -114,7 +114,7 @@ const SearchPage = () => {
         
         <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-gray-800">
           Resultados da busca por: 
-          <span className="text-emerald-600 ml-2">"{query}"</span>
+          <span className="text-emerald-600 ml-2">`&quot;`{query}`&quot;`</span>
         </h1>
         <p className="mt-2 text-gray-600">{searchResults.length} resultado(s) encontrado(s).</p>
 

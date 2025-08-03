@@ -55,7 +55,7 @@ const VicePrefeitoPage = () => {
               {/* Citação / Missão */}
               <blockquote className="border-l-4 border-emerald-500 pl-4">
                 <p className="text-lg italic text-gray-700">
-                  "Comprometido com o progresso, trago uma visão inovadora e prática, unindo expertise jurídica e empresarial para impulsionar Inconfidentes rumo a um futuro próspero."
+                  `&quot;`Comprometido com o progresso, trago uma visão inovadora e prática, unindo expertise jurídica e empresarial para impulsionar Inconfidentes rumo a um futuro próspero.`&quot;`
                 </p>
               </blockquote>
 
