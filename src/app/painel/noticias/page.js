@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
 import { PlusCircle, Edit, Trash2 } from 'lucide-react';
+import { HeaderPainel } from '@/components/NavBar/HeaderPainel';
 
 const GerenciarNoticiasPage = () => {
     const { data: session } = useSession();
@@ -40,6 +41,8 @@ const GerenciarNoticiasPage = () => {
     if (loading) return <div>Carregando notícias...</div>;
 
     return (
+        <>
+                <HeaderPainel/>
         <div className="p-8">
             <div className="flex justify-between items-center mb-6">
                 <h1 className="text-3xl font-bold text-gray-800">Gerenciar Notícias</h1>
@@ -81,6 +84,7 @@ const GerenciarNoticiasPage = () => {
                 </table>
             </div>
         </div>
+            </>
     );
 };
 

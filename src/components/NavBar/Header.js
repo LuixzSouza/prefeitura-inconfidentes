@@ -22,7 +22,7 @@ export function Header() {
                 const activeChild = item.dropdown.some(sub => sub.url === pathname);
 
                 return (
-                  <li key={idx} className="group pb-4">
+                  <li key={idx} className="group">
                     <button
                       className={`
                         flex items-center gap-2 px-3 py-2 rounded transition-colors duration-200
@@ -100,7 +100,7 @@ export function Header() {
                 (item.linkUrl !== '/' && pathname.startsWith(item.linkUrl + '/'));
 
               return (
-                <li key={idx} className="pb-4">
+                <li key={idx} className="">
                   <Link
                     href={item.linkUrl}
                     className={`

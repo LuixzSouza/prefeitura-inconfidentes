@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import NoticiaForm from '../../NoticiaForm'; // Reutilizando o mesmo formulário
+import { HeaderPainel } from '@/components/NavBar/HeaderPainel';
 
 const EditarNoticiaPage = () => {
     const { id } = useParams();
@@ -26,12 +27,15 @@ const EditarNoticiaPage = () => {
     if (!noticia) return <div>Carregando...</div>;
 
     return (
+        <>
+                <HeaderPainel/>
         <div className="p-8">
             <h1 className="text-3xl font-bold text-gray-800 mb-6">Editar Notícia</h1>
             <div className="bg-white p-8 rounded-xl shadow-sm border">
                 <NoticiaForm noticiaInicial={noticia} />
             </div>
         </div>
+            </>
     );
 };
 

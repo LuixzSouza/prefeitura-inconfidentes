@@ -6,9 +6,18 @@ import { useSession, signOut } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { 
     LayoutDashboard, Users, Newspaper, Building, Briefcase, Megaphone, LogOut,
-    FilePlus, ChevronRight, PenSquare, Wrench
+    FilePlus, ChevronRight, PenSquare, Wrench,
+    Gavel,
+    FileBadge,
+    FileBadge2,
+    BookOpen,
+    Award,
+    UserSquare,
+    Camera
 } from 'lucide-react';
 import { Header } from '@/components/NavBar/Header';
+import { HeaderPainel } from '@/components/NavBar/HeaderPainel';
+import { FullPageLoader } from '@/components/ui/FullPageLoader';
 
 // --- FUNÇÃO AUXILIAR PARA FORMATAR DATAS ---
 // Transforma datas em texto relativo como "hoje", "ontem", "há 2 dias"
@@ -29,17 +38,25 @@ const formatRelativeTime = (dateString) => {
 const managementLinks = {
     conteudo: [
         { href: '/painel/noticias', text: 'Gerenciar Notícias', icon: <Newspaper/> },
-        { href: '#', text: 'Gerenciar Eventos', icon: <Megaphone/> },
-        { href: '#', text: 'Gerenciar Páginas', icon: <FilePlus/> },
+        { href: '/painel/eventos', text: 'Gerenciar Eventos', icon: <Megaphone/> },
+        { href: '/painel/paginas', text: 'Gerenciar Páginas', icon: <FilePlus/> },
+    ],
+        publicacoes: [ 
+        { href: '/painel/licitacoes', text: 'Gerenciar Licitações', icon: <Gavel/> },
+        { href: '/painel/legislacao', text: 'Gerenciar Leis e Atos', icon: <FileBadge2/> },
+        { href: '/painel/diario-oficial', text: 'Gerenciar Diário Oficial', icon: <BookOpen/> },
+        { href: '/painel/concursos', text: 'Gerenciar Concursos', icon: <Award/> },
     ],
     governo: [
+        { href: '/painel/secretarias', text: 'Secretarias', icon: <Building/> },
+        { href: '/painel/servidores', text: 'Servidores', icon: <UserSquare/> },
         { href: '#', text: 'Prefeito e Vice' },
-        { href: '#', text: 'Secretarias' },
         { href: '#', text: 'Galeria de Prefeitos' },
     ],
     servicos: [
+        { href: '/painel/galerias', text: 'Galerias de Fotos', icon: <Camera/> },
+        { href: '/painel/ouvidoria', text: 'Ouvidoria', icon: <Megaphone/> },
         { href: '#', text: 'Telefones Úteis' },
-        { href: '#', text: 'Ouvidoria' },
         { href: '#', text: 'Portal da Transparência' },
     ]
 };
@@ -77,7 +94,7 @@ const PainelControlePage = () => {
     }, [status, router]);
 
     if (status === 'loading' || !stats) {
-        return <div className="min-h-screen flex items-center justify-center bg-slate-50">Carregando Painel...</div>;
+        return <FullPageLoader />;
     }
     
     if (status !== 'authenticated') {
@@ -86,22 +103,7 @@ const PainelControlePage = () => {
 
     return (
         <div className="min-h-screen bg-slate-100">
-            <header className="bg-white shadow-sm sticky top-0 z-20">
-              <div className="flex justify-between items-center py-3 container mx-auto px-4 sm:px-6 lg:px-8">
-                  <div className="flex items-center gap-3">
-                      <LayoutDashboard className="text-emerald-600" />
-                      <h1 className="text-xl font-bold text-gray-800">Painel Administrativo</h1>
-                  </div>
-                  <div className="flex items-center gap-4">
-                      <span className="text-sm text-gray-600 hidden sm:block">
-                          Bem-vindo, <strong>{session?.user?.name || 'Usuário'}</strong>
-                      </span>
-                      <button onClick={() => signOut({ callbackUrl: '/' })} className="p-2 rounded-full hover:bg-gray-200" title="Sair do Painel">
-                          <LogOut size={20} className="text-gray-600" />
-                      </button>
-                  </div>
-              </div>
-            </header>
+            <HeaderPainel/>
             
             <main className="container mx-auto p-4 sm:p-6 lg:p-8">
                 <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
@@ -115,6 +117,7 @@ const PainelControlePage = () => {
                     <div className="lg:col-span-2 space-y-8">
                         {/* Cards de Gerenciamento Reintegrados */}
                         <ManagementCard title="Gerenciar Conteúdo" links={managementLinks.conteudo} />
+                        <ManagementCard title="Gerenciar Publicações Oficiais" links={managementLinks.publicacoes} />
                         <ManagementCard title="Gerenciar Estrutura do Governo" links={managementLinks.governo} />
                         <ManagementCard title="Gerenciar Serviços e Transparência" links={managementLinks.servicos} />
                     </div>

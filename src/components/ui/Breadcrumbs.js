@@ -60,7 +60,7 @@ const Breadcrumbs = () => {
           {/* Lado Direito: Botão Voltar */}
           <button
             onClick={() => router.back()}
-            className="flex items-center gap-2 px-3 py-1.5 rounded-md text-sm font-medium text-gray-700 bg-white border border-gray-300 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 transition-all duration-200"
+            className="cursor-pointer flex items-center gap-2 px-3 py-1.5 rounded-md text-sm font-medium text-gray-700 bg-white border border-gray-300 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 transition-all duration-200"
             aria-label="Voltar para a página anterior"
           >
             <ArrowLeft size={16} />

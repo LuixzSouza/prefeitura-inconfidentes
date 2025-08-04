@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
 import { PlusCircle, Edit, Trash2, ShieldOff } from 'lucide-react';
+import { HeaderPainel } from '@/components/NavBar/HeaderPainel';
 
 const GerenciarUsuariosPage = () => {
     const { data: session, status } = useSession();
@@ -42,6 +43,8 @@ const GerenciarUsuariosPage = () => {
     // Proteção da Página: Se não for admin, mostra mensagem de acesso negado
     if (session?.user?.role !== 'admin') {
         return (
+            <>
+        <HeaderPainel/>
             <div className="p-8 text-center">
                 <ShieldOff className="mx-auto h-12 w-12 text-red-500" />
                 <h1 className="mt-4 text-2xl font-bold text-gray-800">Acesso Negado</h1>
@@ -50,11 +53,14 @@ const GerenciarUsuariosPage = () => {
                     Voltar ao Painel
                 </Link>
             </div>
+    </>
         );
     }
     
     // Renderização normal para o admin
     return (
+        <>
+                <HeaderPainel/>
         <div className="p-8">
             <div className="flex justify-between items-center mb-6">
                 <h1 className="text-3xl font-bold text-gray-800">Gerenciar Usuários</h1>
@@ -89,6 +95,7 @@ const GerenciarUsuariosPage = () => {
                 </table>
             </div>
         </div>
+            </>
     );
 };
 
