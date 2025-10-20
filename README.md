@@ -4,6 +4,9 @@
 
 Este repositório contém o código-fonte do portal oficial da Prefeitura de Inconfidentes. A aplicação é full-stack, construída com as tecnologias mais modernas, e é dividida em duas partes principais: um site público informativo para os cidadãos e um painel administrativo (CMS) robusto para o gerenciamento completo do conteúdo.
 
+Webmail
+**e-mail:** admin@inconfidentes.mg.gov.br
+**senha:** admin
 ---
 
 ## ✨ Funcionalidades
