@@ -1,0 +1,8 @@
+[build]
+  command = "npm run build"
+
+[build.environment]
+  # Next.js 15 + Prisma 6 exigem Node 20+ em build e runtime das funções.
+  # Sem isso o Netlify pode rodar as funções em uma versão de Node onde a
+  # iteração de Web APIs modernas falha ("object is not iterable").
+  NODE_VERSION = "20"
