@@ -14,18 +14,18 @@ export function S_AcessSped() {
   const toggleLayout = () => setLayout(prev => (prev === 'grid' ? 'list' : 'grid'))
 
   const cards = [
-      { icon: "area-habitacional", title: "Conjunto Habitacional" },
-      { icon: "covid-19", title: "COVID-19" },
-      { icon: "decreto", title: "Decretos" },
-      { icon: "caderno", title: "Diário Oficial" },
-      { icon: "leis", title: "Leis Municipais" },
-      { icon: "licitacao", title: "Licitações" },
-      { icon: "taxa", title: "Nota Fiscal Eletrônica" },
-      { icon: "impostos", title: "IPTU, ISS e Taxas" },
-      { icon: "portal-transparencia", title: "Portal da Transparência" },
-      { icon: "portaria", title: "Portarias" },
-      { icon: "registro-de-dominio", title: "Portal do Servidor" },
-      { icon: "concurso", title: "Concursos e Seleções" },
+      { icon: "area-habitacional", title: "Conjunto Habitacional", href: "/departamentos/assistencia-social" },
+      { icon: "covid-19", title: "COVID-19", href: "/departamentos/saude" },
+      { icon: "decreto", title: "Decretos", href: "/publicacoes-oficiais/decretos" },
+      { icon: "caderno", title: "Diário Oficial", href: "/publicacoes-oficiais/diario-oficial" },
+      { icon: "leis", title: "Leis Municipais", href: "/publicacoes-oficiais/leis" },
+      { icon: "licitacao", title: "Licitações", href: "/publicacoes-oficiais/licitacoes" },
+      { icon: "taxa", title: "Nota Fiscal Eletrônica", href: "/departamentos/financas" },
+      { icon: "impostos", title: "IPTU, ISS e Taxas", href: "/departamentos/financas" },
+      { icon: "portal-transparencia", title: "Portal da Transparência", href: "/transparencia" },
+      { icon: "portaria", title: "Portarias", href: "/publicacoes-oficiais/portarias" },
+      { icon: "registro-de-dominio", title: "Portal do Servidor", href: "/webmail" },
+      { icon: "concurso", title: "Concursos e Seleções", href: "/publicacoes-oficiais/concursos-e-processos-seletivos" },
   ]
 
   return (
@@ -66,6 +66,7 @@ export function S_AcessSped() {
               key={index}
               icon={item.icon}
               title={item.title}
+              href={item.href}
               layout={layout}
               index={index} // Passando o index para a animação
             />

@@ -12,7 +12,7 @@ export async function PUT(request, { params }) {
   }
 
   try {
-    const { id } = params;
+    const { id } = await params;
     const body = await request.json();
     const { nome, email, senha, nivel_acesso, status } = body;
 
@@ -45,7 +45,7 @@ export async function DELETE(request, { params }) {
   }
 
   try {
-    const { id } = params;
+    const { id } = await params;
 
     // Medida de segurança: impede que o admin delete a si mesmo
     if (parseInt(id) === parseInt(session.user.id)) {

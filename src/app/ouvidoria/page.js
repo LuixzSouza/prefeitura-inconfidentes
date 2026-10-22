@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Header } from '@/components/NavBar/Header';
 import { Footer } from '@/components/sections/Footer';
+import { ManifestacaoForm, ConsultaForm } from './OuvidoriaForms';
 import { 
   Megaphone, 
   PlusCircle, 
@@ -17,10 +18,9 @@ import {
 } from 'lucide-react';
 
 const relatedLinks = [
-    { text: 'Lei nº 1.571/2025 - Institui a Ouvidoria Geral do Município', url: '#' },
-    { text: 'Decreto Nº 2.232, de 10 de julho DE 2025 - Aprova o Regimento Interno da Ouvidoria', url: '#' },
-    { text: 'Acompanhar pedido já realizado até 2024', url: '#' },
-    { text: 'Acompanhar pedido já realizado até 2023', url: '#' },
+    { text: 'Lei nº 1.571/2025 - Institui a Ouvidoria Geral do Município', url: '/publicacoes-oficiais/leis' },
+    { text: 'Decreto Nº 2.232, de 10 de julho DE 2025 - Aprova o Regimento Interno da Ouvidoria', url: '/publicacoes-oficiais/decretos' },
+    { text: 'Acompanhar uma manifestação pelo protocolo', url: '#consultar-manifestacao' },
 ];
 
 const OuvidoriaPage = () => {
@@ -48,19 +48,31 @@ const OuvidoriaPage = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {/* Card para Abrir Manifestação */}
               <ActionCard 
-                href="#" // Substituir pelo link real do sistema de ouvidoria
+                href="#nova-manifestacao"
                 icon={<PlusCircle />}
                 title="Abrir Manifestação"
                 description="Registre uma nova solicitação, denúncia, sugestão, reclamação ou elogio."
               />
               {/* Card para Consultar Manifestação */}
               <ActionCard 
-                href="#" // Substituir pelo link real do sistema de ouvidoria
+                href="#consultar-manifestacao"
                 icon={<FileSearch />}
                 title="Consultar Manifestação"
                 description="Acompanhe o andamento de um pedido já realizado utilizando seu protocolo."
               />
             </div>
+
+            <section id="nova-manifestacao" className="scroll-mt-24 rounded-xl bg-white p-6 shadow-md">
+              <h2 className="mb-1 text-2xl font-bold text-gray-800">Abrir Manifestação</h2>
+              <p className="mb-6 text-gray-600">Preencha o formulário abaixo. Você receberá um número de protocolo ao final.</p>
+              <ManifestacaoForm />
+            </section>
+
+            <section id="consultar-manifestacao" className="scroll-mt-24 rounded-xl bg-white p-6 shadow-md">
+              <h2 className="mb-1 text-2xl font-bold text-gray-800">Consultar Manifestação</h2>
+              <p className="mb-6 text-gray-600">Informe o protocolo e o e-mail usados no registro.</p>
+              <ConsultaForm />
+            </section>
           </div>
 
           {/* Coluna Lateral de Informações */}
@@ -77,7 +89,7 @@ const OuvidoriaPage = () => {
             {/* Box de Links Relacionados */}
             <InfoBox title="Links Relacionados">
                 {relatedLinks.map(link => (
-                    <a key={link.text} href={link.url} target="_blank" rel="noopener noreferrer" className="flex items-start gap-3 text-emerald-700 hover:underline text-sm">
+                    <a key={link.text} href={link.url} className="flex items-start gap-3 text-emerald-700 hover:underline text-sm">
                         <FileText size={16} className="flex-shrink-0 mt-0.5" />
                         <span>{link.text}</span>
                     </a>
@@ -95,7 +107,7 @@ const OuvidoriaPage = () => {
 // --- Sub-componentes para organizar a página ---
 
 const ActionCard = ({ href, icon, title, description }) => (
-    <a href={href} target="_blank" rel="noopener noreferrer" className="block bg-white p-6 rounded-xl shadow-md border-t-4 border-emerald-500 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+    <a href={href} className="block bg-white p-6 rounded-xl shadow-md border-t-4 border-emerald-500 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
         <div className="text-emerald-600 mb-3">
             {React.cloneElement(icon, { size: 36 })}
         </div>

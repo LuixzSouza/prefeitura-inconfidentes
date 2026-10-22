@@ -1,14 +1,15 @@
 // SEU ARQUIVO: CardSpeed.js (Com o novo design)
 
 import Image from "next/image"
+import Link from "next/link"
 
-export function CardSpeed({ title, icon, layout, index }) {
+export function CardSpeed({ title, icon, href = "#", layout, index }) {
   const isListLayout = layout === "list"
 
   return (
     // Link clicável envolvendo todo o card para melhor acessibilidade
-    <a 
-      href="#" // Substitua pelo link real do item
+    <Link
+      href={href}
       className={`
         w-full h-full p-4 gap-4 flex items-center group
         border rounded-xl shadow-sm cursor-pointer
@@ -39,6 +40,6 @@ export function CardSpeed({ title, icon, layout, index }) {
       <h5 className="font-semibold text-gray-700 transition-colors duration-300 group-hover:text-green-800">
         {title}
       </h5>
-    </a>
+    </Link>
   )
 }

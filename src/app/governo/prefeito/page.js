@@ -19,7 +19,7 @@ import {
 // --- DADOS DO PREFEITO ---
 // Insira o caminho para a foto do prefeito aqui.
 // A foto deve estar na pasta /public do seu projeto. Ex: /fotos/prefeito.jpg
-const fotoPrefeitoUrl = 'https://inconfidentes.mg.gov.br/wp-content/uploads/2025/01/CNV2024INC00160-1-683x1024.jpg'; // '/fotos/claudinei-tunes-pereira.jpg'
+const fotoPrefeitoUrl = '/images/avatar-placeholder.svg'; // '/fotos/claudinei-tunes-pereira.jpg'
 
 const PrefeitoPage = () => {
   return (
@@ -58,7 +58,7 @@ const PrefeitoPage = () => {
               {/* Citação / Missão */}
               <blockquote className="border-l-4 border-emerald-500 pl-4">
                 <p className="text-lg italic text-gray-700">
-                  `&quot;`Compromisso com uma gestão transparente, honesta e planejada, respeitando o orçamento público e garantindo o uso responsável dos recursos para transformar Inconfidentes.`&quot;`
+                  &quot;Compromisso com uma gestão transparente, honesta e planejada, respeitando o orçamento público e garantindo o uso responsável dos recursos para transformar Inconfidentes.&quot;
                 </p>
               </blockquote>
 

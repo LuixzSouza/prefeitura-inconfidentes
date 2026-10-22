@@ -49,7 +49,6 @@ export async function GET(request, { params }) {
     return NextResponse.json(
       {
         message: 'Erro interno ao buscar publicações.',
-        error: error.message,
       },
       { status: 500 }
     );

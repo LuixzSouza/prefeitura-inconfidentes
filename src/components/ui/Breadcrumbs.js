@@ -24,15 +24,15 @@ const Breadcrumbs = () => {
     <div className="bg-white border-b border-gray-200">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Container principal com Flexbox para alinhar os itens */}
-        <div className="flex items-center justify-between py-3">
+        <div className="flex items-center justify-between gap-3 py-3">
           
           {/* Lado Esquerdo: Lista de Breadcrumbs */}
-          <nav aria-label="Breadcrumb">
-            <ol className="flex items-center space-x-2">
+          <nav aria-label="Breadcrumb" className="min-w-0">
+            <ol className="flex items-center space-x-2 min-w-0">
               {crumbs.map((crumb, idx) => {
                 const isLast = idx === crumbs.length - 1;
                 return (
-                  <li key={crumb.href} className="flex items-center text-sm">
+                  <li key={crumb.href} className={`flex items-center text-sm ${isLast ? "min-w-0" : "shrink-0"} ${idx > 0 && !isLast ? "hidden sm:flex" : ""}`}>
                     <Link
                       href={crumb.href}
                       // Previne o clique no último item
@@ -48,7 +48,7 @@ const Breadcrumbs = () => {
                       aria-current={isLast ? 'page' : undefined}
                     >
                       {idx === 0 && <Home size={14} />}
-                      <span className="leading-none">{crumb.label}</span>
+                      <span className="leading-none truncate max-w-[40vw] sm:max-w-xs">{crumb.label}</span>
                     </Link>
                     {!isLast && <ChevronRight size={18} className="ml-2 text-gray-400" />}
                   </li>
@@ -60,7 +60,7 @@ const Breadcrumbs = () => {
           {/* Lado Direito: Botão Voltar */}
           <button
             onClick={() => router.back()}
-            className="cursor-pointer flex items-center gap-2 px-3 py-1.5 rounded-md text-sm font-medium text-gray-700 bg-white border border-gray-300 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 transition-all duration-200"
+            className="shrink-0 cursor-pointer flex items-center gap-2 px-3 py-1.5 rounded-md text-sm font-medium text-gray-700 bg-white border border-gray-300 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 transition-all duration-200"
             aria-label="Voltar para a página anterior"
           >
             <ArrowLeft size={16} />

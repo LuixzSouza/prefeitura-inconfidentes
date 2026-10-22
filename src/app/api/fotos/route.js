@@ -6,7 +6,7 @@ import { authOptions } from "../auth/[...nextauth]/route";
 // POST /api/fotos -> Adiciona uma nova foto a uma galeria
 export async function POST(request) {
   const session = await getServerSession(authOptions);
-  if (session?.user?.role === 'publicador') {
+  if (!session || session.user.role === 'publicador') {
       return NextResponse.json({ message: "Acesso negado" }, { status: 403 });
   }
 

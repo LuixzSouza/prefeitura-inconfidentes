@@ -16,7 +16,7 @@ export async function PUT(request, { params }) {
   }
 
   try {
-    const { id } = params;
+    const { id } = await params;
     const body = await request.json();
     const { titulo, subtitulo, conteudo, imagem_destaque, slug, data_publicacao, status } = body;
 
@@ -48,7 +48,7 @@ export async function DELETE(request, { params }) {
   }
 
   try {
-    const { id } = params;
+    const { id } = await params;
     await prisma.noticias.delete({
       where: { id: parseInt(id) },
     });

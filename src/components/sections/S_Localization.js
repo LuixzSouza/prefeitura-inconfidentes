@@ -15,17 +15,17 @@ const InfoIcon = ({ children }) => (
 );
 
 const images = [
-  "https://inconfidentes.mg.gov.br/wp-content/uploads/2022/04/1.jpg",
-  "https://inconfidentes.mg.gov.br/wp-content/uploads/2022/04/2.jpg",
-  "https://inconfidentes.mg.gov.br/wp-content/uploads/2022/04/3.jpg",
-  "https://inconfidentes.mg.gov.br/wp-content/uploads/2022/04/4.jpg",
-  "https://inconfidentes.mg.gov.br/wp-content/uploads/2022/04/5.jpg",
-  "https://inconfidentes.mg.gov.br/wp-content/uploads/2022/04/site_4.jpg",
-  "https://inconfidentes.mg.gov.br/wp-content/uploads/2022/04/site_5.jpg",
-  "https://inconfidentes.mg.gov.br/wp-content/uploads/2022/04/site_6.jpg",
-  "https://inconfidentes.mg.gov.br/wp-content/uploads/2022/04/site_7.jpg",
-  "https://inconfidentes.mg.gov.br/wp-content/uploads/2022/04/site_8.jpg",
-  "https://inconfidentes.mg.gov.br/wp-content/uploads/2022/04/Design_sem_nome_33.png",
+  "/images/site/1.jpg",
+  "/images/site/2.jpg",
+  "/images/site/3.jpg",
+  "/images/site/4.jpg",
+  "/images/site/5.jpg",
+  "/images/site/site_4.jpg",
+  "/images/site/site_5.jpg",
+  "/images/site/site_6.jpg",
+  "/images/site/site_7.jpg",
+  "/images/site/site_8.jpg",
+  "/images/site/Design_sem_nome_33.png",
 ];
 
 const facts = [

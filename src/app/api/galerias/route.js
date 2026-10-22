@@ -18,7 +18,7 @@ export async function GET() {
 // POST /api/galerias -> Cria uma nova galeria
 export async function POST(request) {
   const session = await getServerSession(authOptions);
-  if (session?.user?.role === 'publicador') {
+  if (!session || session.user.role === 'publicador') {
       return NextResponse.json({ message: "Acesso negado" }, { status: 403 });
   }
 

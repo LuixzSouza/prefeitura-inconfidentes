@@ -28,9 +28,9 @@ export function S_Badged() {
         <section className="w-full bg-gray-200 py-12" >
             <ContainerGrid>
                 <div className="w-full h-auto flex flex-col items-center justify-center overflow-hidden">
-                    <h1 className="text-black text-6xl text-center font-bold" >
+                    <h1 className="text-black text-3xl sm:text-5xl md:text-6xl text-center font-bold" >
                         PREFEITURA DE <br/>
-                        <span className="text-green-700 text-7xl font-extrabold" >INCONFIDENTES</span>
+                        <span className="text-green-700 text-4xl sm:text-6xl md:text-7xl font-extrabold" >INCONFIDENTES</span>
                     </h1>
                     <div
                         className="relative w-full max-w-[630px] overflow-hidden"
@@ -59,7 +59,7 @@ export function S_Badged() {
                             />
                         </div>
                     </div>
-                    <p className="text-black text-2xl" >
+                    <p className="text-black text-base sm:text-2xl text-center" >
                         <span className="font-bold" >
                             RENOVAÇÃO QUE FAZ ACONTECER 
                         </span>

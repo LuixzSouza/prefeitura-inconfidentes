@@ -63,7 +63,7 @@ const PaginaForm = ({ paginaInicial }) => {
                 <label>Conteúdo</label>
                 <textarea {...register('conteudo')} rows="15" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"></textarea>
                 {errors.conteudo && <p className="text-sm text-red-600">{errors.conteudo.message}</p>}
-                <p className="text-xs text-gray-500 mt-1">Dica: Você pode usar tags HTML básicas aqui, como `&lt;h1&gt;`, `&lt;p&gt;`, `&lt;b&gt;`.</p>
+                <p className="text-xs text-gray-500 mt-1">Dica: Você pode usar tags HTML básicas aqui, como <code>&lt;h1&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;b&gt;</code>.</p>
             </div>
             <div className="flex justify-end">
                 <button type="submit" disabled={isSubmitting} className="bg-emerald-600 text-white font-semibold px-6 py-2 rounded-lg hover:bg-emerald-700 disabled:opacity-50">

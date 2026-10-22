@@ -8,6 +8,8 @@ import { S_Noticed } from "@/components/sections/S_Noticed";
 import { S_SocialMedia } from "@/components/sections/S_SocialMedia";
 import { S_Temperature } from "@/components/sections/S_Temperature";
 
+export const revalidate = 60;
+
 export default function Home() {
   return (
     <div className="relative" >

@@ -14,7 +14,7 @@ const socialProfiles = {
   Instagram: {
     username: 'prefeiturainconfidentes',
     description: '🧶 Capital Nacional do Crochê • Terra dos Caminhos 📲 Informações, serviços e notícias oficiais.',
-    profilePic: 'https://inconfidentes.mg.gov.br/wp-content/uploads/2025/07/491509690_18027071750669538_8591930810228243540_n.jpg',
+    profilePic: '/images/favicon.png',
     url: 'https://www.instagram.com/prefeiturainconfidentes/',
     themeColor: 'bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500', // Gradiente do Instagram
     icon: '/icons/instagram.svg' 
@@ -22,7 +22,7 @@ const socialProfiles = {
   Facebook: {
     username: 'Prefeitura de Inconfidentes',
     description: 'Página oficial da Prefeitura. Fique por dentro de todas as ações e novidades da nossa cidade.',
-    profilePic: 'https://inconfidentes.mg.gov.br/wp-content/uploads/2025/07/491509690_18027071750669538_8591930810228243540_n.jpg', // Caminho para uma imagem de perfil do Facebook
+    profilePic: '/images/favicon.png', // Caminho para uma imagem de perfil do Facebook
     url: 'https://www.facebook.com/prefeituradeinconfidentes/',
     themeColor: 'bg-blue-600', // Azul do Facebook
     icon: '/icons/facebook.svg'
@@ -30,7 +30,7 @@ const socialProfiles = {
   YouTube: {
     username: 'Prefeitura de Inconfidentes',
     description: 'Canal oficial para transmissões ao vivo, vídeos institucionais e reportagens sobre Inconfidentes.',
-    profilePic: 'https://inconfidentes.mg.gov.br/wp-content/uploads/2025/07/491509690_18027071750669538_8591930810228243540_n.jpg', // Caminho para uma imagem de perfil do YouTube
+    profilePic: '/images/favicon.png', // Caminho para uma imagem de perfil do YouTube
     url: 'http://googleusercontent.com/youtube.com/3',
     themeColor: 'bg-red-600', // Vermelho do YouTube
     icon: '/icons/youtube.svg'
@@ -40,7 +40,7 @@ const socialProfiles = {
 // Array de posts, agora com um campo 'href' para o link
 const allPosts = [
   {
-    src: "https://inconfidentes.mg.gov.br/wp-content/uploads/sb-instagram-feed-images/523038978_18037604483669538_1263792696046966888_nlow.webp",
+    src: "/images/site/site_4.jpg",
     alt: "Post Instagram 1",
     title: "Campeonato Municipal",
     description: "Confira as últimas partidas do campeonato local.",
@@ -48,7 +48,7 @@ const allPosts = [
     href: "http://googleusercontent.com/instagram.com/p/1"
   },
   {
-    src: "https://inconfidentes.mg.gov.br/wp-content/uploads/sb-instagram-feed-images/523375241_18037589714669538_3270669814871326561_nlow.webp",
+    src: "/images/site/site_6.jpg",
     alt: "Post Instagram 2",
     title: "Reunião com Prefeitos",
     description: "Alinhamento de ações regionais no CISAMESP.",
@@ -56,7 +56,7 @@ const allPosts = [
     href: "http://googleusercontent.com/instagram.com/p/2"
   },
   {
-    src: "https://inconfidentes.mg.gov.br/wp-content/uploads/sb-instagram-feed-images/524117296_18037617461669538_2147451411748035214_nfull.webp",
+    src: "/images/bgTemperature.jpg",
     alt: "Post Instagram 3",
     title: "Esporte em Ação",
     description: "Projeto de futebol para jovens no campo municipal.",

@@ -1,13 +1,16 @@
+// Gera o hash bcrypt de uma senha para inserir manualmente no banco.
+// Uso: node gerar-hash.js "minha-senha-forte"
 const bcrypt = require('bcryptjs');
 
-// A senha que você quer usar para o login
-const senhaPura = 'admin'; 
+const senhaPura = process.argv[2];
 
-// O "salt" adiciona uma camada extra de segurança
-const salt = bcrypt.genSaltSync(10); 
-const hash = bcrypt.hashSync(senhaPura, salt);
+if (!senhaPura) {
+  console.error('Uso: node gerar-hash.js "<senha>"');
+  process.exit(1);
+}
 
-console.log(`Senha em texto puro: ${senhaPura}`);
+const hash = bcrypt.hashSync(senhaPura, 10);
+
 console.log("============================================================");
 console.log("SEU HASH PARA COLOCAR NO BANCO DE DADOS É:");
 console.log(hash);

@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
@@ -13,17 +13,17 @@ const GerenciarFotosPage = () => {
     const [galeria, setGaleria] = useState(null);
     const { register, handleSubmit, reset } = useForm();
 
-    const fetchGaleria = async () => {
+    const fetchGaleria = useCallback(async () => {
         if (galeriaId) {
             const res = await fetch(`/api/galerias/${galeriaId}`);
             const data = await res.json();
             setGaleria(data);
         }
-    };
+    }, [galeriaId]);
 
     useEffect(() => {
         fetchGaleria();
-    }, [galeriaId]);
+    }, [fetchGaleria]);
 
     const handleAddFoto = async (data) => {
         const promise = fetch('/api/fotos', {

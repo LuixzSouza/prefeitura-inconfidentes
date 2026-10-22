@@ -1,5 +1,6 @@
 export const listNav = [
   { icon: "house", linkTxt: "Página Inicial", linkUrl: "/" },
+  { icon: "caderno", linkTxt: "Notícias", linkUrl: "/noticias" },
   {
     icon: "municipio",
     linkTxt: "O Município",
@@ -62,6 +63,8 @@ export const listNav = [
 
 export const popularLinks = [
     { text: 'Portal da Transparência', href: '/transparencia' },
+    { text: 'Notícias', href: '/noticias' },
+    { text: 'Ouvidoria', href: '/ouvidoria' },
     { text: 'Secretarias', href: '/governo/secretarias' },
     { text: 'Departamentos', href: '/departamentos' },
     { text: 'Licitações', href: '/publicacoes-oficiais/licitacoes' },

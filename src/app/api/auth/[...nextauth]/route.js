@@ -22,8 +22,8 @@ export const authOptions = {
           where: { email: credentials.email },
         });
 
-        if (!user) {
-          return null; // Usuário não encontrado
+        if (!user || user.status !== "ativo") {
+          return null; // Usuário não encontrado ou desativado
         }
         
         // 2. Compara a senha enviada com a senha "hasheada" no banco

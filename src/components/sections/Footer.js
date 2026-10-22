@@ -12,7 +12,7 @@ export function Footer() {
           <div className="flex flex-col gap-4 ">
             <div className=" inline-block p-4 rounded-2xl shadow-lg">
               <Image
-                src="https://inconfidentes.mg.gov.br/wp-content/uploads/2025/07/LOGO-2025-2.png"
+                src="/images/renovation-25_28.png"
                 width={200}
                 height={70}
                 alt="Logo Prefeitura"

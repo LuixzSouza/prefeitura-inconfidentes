@@ -34,8 +34,8 @@ const portalData = [
     categoria: 'Licitações e Contratos',
     icone: <Gavel />,
     links: [
-      { titulo: 'Licitações / Contratos', url: '#' },
-      { titulo: 'Compras Diretas (Lei 14.133/21)', url: '#' },
+      { titulo: 'Licitações / Contratos', url: '/publicacoes-oficiais/licitacoes' },
+      { titulo: 'Compras Diretas (Lei 14.133/21)', url: '/publicacoes-oficiais/compras-diretas' },
       { titulo: 'Plano de contratações anual', url: '#' },
       { titulo: 'Fiscal de Contrato', url: '#' },
       { titulo: 'Relação dos licitantes/contratados sancionados', url: '#' },
@@ -45,13 +45,13 @@ const portalData = [
     categoria: 'Leis e Documentos',
     icone: <FileText />,
     links: [
-      { titulo: 'Decretos Municipais', url: '#' },
-      { titulo: 'Leis Municipais Vigentes', url: '#' },
+      { titulo: 'Decretos Municipais', url: '/publicacoes-oficiais/decretos' },
+      { titulo: 'Leis Municipais Vigentes', url: '/publicacoes-oficiais/leis' },
       { titulo: 'Lei Orgânica Municipal', url: '#' },
       { titulo: 'Legislação de Pessoal do Município', url: '#' },
       { titulo: 'Documentos e Informações sigilosas', url: '#' },
       { titulo: 'Regulamentação da Concessão de Diárias', url: '#' },
-      { titulo: 'Regulamentação da Ouvidoria', url: '#' },
+      { titulo: 'Regulamentação da Ouvidoria', url: '/publicacoes-oficiais/decretos' },
       { titulo: 'Regulamentação da LAI', url: '#' },
     ]
   },
@@ -60,7 +60,7 @@ const portalData = [
     icone: <BarChart2 />,
     links: [
       { titulo: 'Planejamento de Contas (LDO, LOA e PPA)', url: '#' },
-      { titulo: 'Estrutura Organizacional', url: '#' },
+      { titulo: 'Estrutura Organizacional', url: '/governo/secretarias' },
       { titulo: 'Programas e Ações', url: '#' },
       { titulo: 'Plano Estratégico', url: '#' },
       { titulo: 'Projetos e execução de obras públicas', url: '#' },
@@ -75,9 +75,9 @@ const portalData = [
     categoria: 'Participação Cidadã',
     icone: <Users />,
     links: [
-      { titulo: 'Ouvidoria (Solicitações, denúncias, etc.)', url: '#' },
-      { titulo: 'Serviço de Informação ao Cidadão (SIC)', url: '#' },
-      { titulo: 'Agenda do Prefeito', url: '#' },
+      { titulo: 'Ouvidoria (Solicitações, denúncias, etc.)', url: '/ouvidoria' },
+      { titulo: 'Serviço de Informação ao Cidadão (SIC)', url: '/ouvidoria' },
+      { titulo: 'Agenda do Prefeito', url: '/governo/prefeito/agenda' },
       { titulo: 'Carta de Serviços ao Usuário', url: '#' },
       { titulo: 'Perguntas Frequentes', url: '#' },
       { titulo: 'Pesquisas de Satisfação dos Serviços', url: '#' },
@@ -111,8 +111,8 @@ const portalData = [
       { titulo: 'Emendas Parlamentares', url: '#' },
       { titulo: 'Consulta – SIF', url: '#' },
       { titulo: 'Consulta – SICOM', url: '#' },
-      { titulo: 'Saúde', url: '#' },
-      { titulo: 'Educação', url: '#' },
+      { titulo: 'Saúde', url: '/departamentos/saude' },
+      { titulo: 'Educação', url: '/departamentos/educacao' },
       { titulo: 'Serviços Online', url: '#' },
     ]
   }
@@ -204,9 +204,8 @@ const CategoryCard = ({ category }) => (
       {category.links.map((link) => (
         <a 
           key={link.titulo} 
-          href={link.url} 
-          target="_blank" 
-          rel="noopener noreferrer"
+          href={link.url}
+          {...(link.url.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
           className="p-4 bg-white hover:bg-emerald-50 text-gray-700 hover:text-emerald-800 transition-colors flex items-center"
         >
           {link.titulo}

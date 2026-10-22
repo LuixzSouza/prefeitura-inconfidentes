@@ -10,7 +10,7 @@ export async function GET(request, { params }) {
   
     try {
       const pagina = await prisma.paginas.findUnique({
-        where: { id: parseInt(params.id) },
+        where: { id: parseInt((await params).id) },
       });
       if (!pagina) return NextResponse.json({ message: "Página não encontrada" }, { status: 404 });
       return NextResponse.json(pagina);
@@ -22,13 +22,13 @@ export async function GET(request, { params }) {
 // PUT /api/paginas/{id} -> Atualiza uma página
 export async function PUT(request, { params }) {
   const session = await getServerSession(authOptions);
-  if (session?.user?.role === 'publicador') {
+  if (!session || session.user.role === 'publicador') {
       return NextResponse.json({ message: "Acesso negado" }, { status: 403 });
   }
 
   const data = await request.json();
   const pagina = await prisma.paginas.update({
-    where: { id: parseInt(params.id) },
+    where: { id: parseInt((await params).id) },
     data,
   });
   return NextResponse.json(pagina);
@@ -41,6 +41,6 @@ export async function DELETE(request, { params }) {
       return NextResponse.json({ message: "Acesso negado" }, { status: 403 });
   }
   
-  await prisma.paginas.delete({ where: { id: parseInt(params.id) } });
+  await prisma.paginas.delete({ where: { id: parseInt((await params).id) } });
   return new NextResponse(null, { status: 204 });
 }

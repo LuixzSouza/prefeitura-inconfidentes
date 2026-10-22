@@ -1,0 +1,60 @@
+// Notícias de demonstração, exibidas quando o banco de dados ainda não
+// possui notícias publicadas (ou não está disponível no ambiente).
+export const noticiasDemo = [
+  {
+    slug: 'prefeitura-abre-vaga-para-fonoaudiologo',
+    titulo: 'Prefeitura de Inconfidentes abre vaga para Fonoaudiólogo(a)',
+    subtitulo: 'A Prefeitura Municipal de Inconfidentes, por meio da Secretaria Municipal de Saúde, está em busca de profissionais para compor sua equipe.',
+    conteudo: 'A Prefeitura Municipal de Inconfidentes, por meio da Secretaria Municipal de Saúde, está em busca de profissionais de Fonoaudiologia para atuar na rede municipal.\n\nOs interessados devem comparecer à Secretaria Municipal de Saúde portando currículo atualizado e documentos pessoais, de segunda a sexta-feira, das 12h às 16h.\n\nMais informações podem ser obtidas pelo telefone da Secretaria ou presencialmente.',
+    imagem_destaque: '/images/noticeds/vaga-fonoaudiologo.jpg',
+    data_publicacao: '2025-06-25T12:00:00.000Z',
+  },
+  {
+    slug: 'edital-lanchonete-da-rodoviaria',
+    titulo: 'Edital para concessão da Lanchonete da Rodoviária é publicado',
+    subtitulo: 'Está aberto o Edital de Concorrência Pública nº 001/2025, referente à concessão onerosa da lanchonete.',
+    conteudo: 'A Prefeitura informa que está aberto o Edital de Concorrência Pública nº 001/2025, referente à concessão onerosa de uso do espaço da Lanchonete da Rodoviária Municipal.\n\nO edital completo, com todas as condições de participação, está disponível na área de Publicações Oficiais do portal.',
+    imagem_destaque: '/images/bgTemperature.jpg',
+    data_publicacao: '2025-06-25T11:00:00.000Z',
+  },
+  {
+    slug: 'edital-lanchonete-cancha-de-bocha',
+    titulo: 'Aberto edital para concessão da Lanchonete da Cancha de Bocha',
+    subtitulo: 'Edital de Concorrência Pública nº 002/2025 para a concessão onerosa do espaço.',
+    conteudo: 'A Prefeitura informa que está aberto o Edital de Concorrência Pública nº 002/2025, para a concessão onerosa da Lanchonete da Cancha de Bocha.\n\nOs interessados podem consultar o edital na área de Publicações Oficiais.',
+    imagem_destaque: '/images/bgTemperature.jpg',
+    data_publicacao: '2025-06-25T10:00:00.000Z',
+  },
+  {
+    slug: 'concurso-de-cafes-especiais',
+    titulo: '1º Concurso de Cafés Especiais valoriza produtores e promove cultura local',
+    subtitulo: 'Evento reuniu produtores da região e destacou a qualidade do café de Inconfidentes.',
+    conteudo: 'O 1º Concurso de Cafés Especiais de Inconfidentes reuniu produtores rurais de todo o município, valorizando a produção local e fortalecendo a cultura cafeeira da região.',
+    imagem_destaque: '/images/noticeds/noticed-1.png',
+    data_publicacao: '2025-06-20T12:00:00.000Z',
+  },
+  {
+    slug: 'primeira-tratorada-de-inconfidentes',
+    titulo: '1ª Tratorada de Inconfidentes é um sucesso e marca história no agronegócio local',
+    subtitulo: 'Desfile reuniu dezenas de máquinas agrícolas pelas ruas da cidade.',
+    conteudo: 'A 1ª Tratorada de Inconfidentes reuniu produtores e famílias em uma grande celebração do agronegócio local.',
+    imagem_destaque: '/images/renovation-25_28.png',
+    data_publicacao: '2025-06-18T12:00:00.000Z',
+  },
+  {
+    slug: 'iptu-2025-vence-em-10-de-julho',
+    titulo: 'IPTU 2025 vence em 10 de julho! Contribua com o desenvolvimento de Inconfidentes',
+    subtitulo: 'Pagamento em dia garante investimentos em serviços públicos.',
+    conteudo: 'O vencimento da cota única do IPTU 2025 é 10 de julho. As guias podem ser retiradas no setor de Tributos da Prefeitura.',
+    imagem_destaque: '/images/renovation-25_28.png',
+    data_publicacao: '2025-06-15T12:00:00.000Z',
+  },
+  {
+    slug: 'seminario-de-empreendedorismo-e-inovacao',
+    titulo: 'Save the Date: 1º Seminário de Empreendedorismo e Inovação acontece em 1º de julho',
+    subtitulo: 'Evento gratuito voltado a empreendedores e estudantes.',
+    conteudo: 'O 1º Seminário de Empreendedorismo e Inovação de Inconfidentes acontece em 1º de julho, com palestras e oficinas gratuitas.',
+    imagem_destaque: '/images/renovation-25_28.png',
+    data_publicacao: '2025-06-10T12:00:00.000Z',
+  },
+];

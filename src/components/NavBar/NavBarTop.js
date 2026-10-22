@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 
 const icons_social = [
@@ -9,9 +12,9 @@ const icons_social = [
 ];
 
 const infoPref = [
-  { icon: "local", info: "Álvares Maciel, 190", link: "#" },
+  { icon: "local", info: "Álvares Maciel, 190", link: "https://www.google.com/maps/search/?api=1&query=Rua+Engenheiro+%C3%81lvares+Maciel+190+Inconfidentes+MG" },
   { icon: "clock", info: "12h–18h", link: "#" },
-  { icon: "phone", info: "(35) 3464–1015", link: "#" },
+  { icon: "phone", info: "(35) 3464–1015", link: "tel:+553534641015" },
 ];
 
 const lai = [
@@ -35,7 +38,7 @@ const lai = [
   },
   {
     txtLink: "Diário Oficial",
-    urlLink: "#",
+    urlLink: "/publicacoes-oficiais/diario-oficial",
     about:
       "Publicações oficiais com atos da administração pública, como nomeações, editais e avisos.",
   },
@@ -47,7 +50,57 @@ const lai = [
 }
 ];
 
+// Preferências de acessibilidade, salvas no navegador do visitante
+const FONTE_MIN = -2;
+const FONTE_MAX = 4;
+
+const lerPreferencia = (chave, padrao) => {
+  try {
+    const valor = localStorage.getItem(chave);
+    return valor === null ? padrao : JSON.parse(valor);
+  } catch {
+    return padrao;
+  }
+};
+
+const salvarPreferencia = (chave, valor) => {
+  try {
+    localStorage.setItem(chave, JSON.stringify(valor));
+  } catch {}
+};
+
 export function Navbartop() {
+  const [fonte, setFonte] = useState(0);
+  const [contraste, setContraste] = useState(false);
+
+  useEffect(() => {
+    setFonte(lerPreferencia("a11y-fonte", 0));
+    setContraste(lerPreferencia("a11y-contraste", false));
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.style.fontSize = fonte ? `${100 + fonte * 10}%` : "";
+    document.documentElement.classList.toggle("alto-contraste", contraste);
+  }, [fonte, contraste]);
+
+  const mudarFonte = (passo) => {
+    const nova = Math.min(FONTE_MAX, Math.max(FONTE_MIN, fonte + passo));
+    setFonte(nova);
+    salvarPreferencia("a11y-fonte", nova);
+  };
+
+  const alternarContraste = () => {
+    setContraste(!contraste);
+    salvarPreferencia("a11y-contraste", !contraste);
+  };
+
+  const redefinir = () => {
+    setFonte(0);
+    setContraste(false);
+    salvarPreferencia("a11y-fonte", 0);
+    salvarPreferencia("a11y-contraste", false);
+  };
+
   return (
     <div className="relative bg-gradient-to-r from-green-800 to-green-950 text-white text-sm py-2 px-4 flex flex-wrap justify-between items-center gap-4 whitespace-nowrap z-20">
         {/* Informações da prefeitura */}
@@ -71,7 +124,7 @@ export function Navbartop() {
         </div>
 
         {/* Links da LAI com tooltip */}
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
             {lai.map((item, index) => (
             <Link
                 className="flex relative group"
@@ -115,11 +168,11 @@ export function Navbartop() {
 
             {/* Dropdown */}
             <div className="absolute z-10 hidden peer-hover:flex hover:flex flex-col bg-green-950 text-white rounded shadow-md w-48">
-                <Link href="#" className="px-4 py-2 text-sm hover:bg-green-800">A+</Link>
-                <Link href="#" className="px-4 py-2 text-sm hover:bg-green-800">A-</Link>
-                <Link href="#" className="px-4 py-2 text-sm hover:bg-green-800">Alto Contraste</Link>
-                <Link href="#" className="px-4 py-2 text-sm hover:bg-green-800">Modo Escuro</Link>
-                <Link href="#" className="px-4 py-2 text-sm hover:bg-green-800">Mapa do Site</Link>
+                <button onClick={() => mudarFonte(1)} className="px-4 py-2 text-left text-sm hover:bg-green-800">A+ Aumentar fonte</button>
+                <button onClick={() => mudarFonte(-1)} className="px-4 py-2 text-left text-sm hover:bg-green-800">A- Diminuir fonte</button>
+                <button onClick={alternarContraste} aria-pressed={contraste} className="px-4 py-2 text-left text-sm hover:bg-green-800">{contraste ? 'Desativar' : 'Ativar'} alto contraste</button>
+                <button onClick={redefinir} className="px-4 py-2 text-left text-sm hover:bg-green-800">Redefinir</button>
+                <Link href="/busca" className="px-4 py-2 text-sm hover:bg-green-800">Buscar no portal</Link>
             </div>
         </div>
     </div>

@@ -8,7 +8,7 @@ export async function GET(request, { params }) {
     const session = await getServerSession(authOptions);
     if (!session) return NextResponse.json({ message: "Não autorizado" }, { status: 401 });
   
-    const servidor = await prisma.servidores.findUnique({ where: { id: parseInt(params.id) } });
+    const servidor = await prisma.servidores.findUnique({ where: { id: parseInt((await params).id) } });
     if (!servidor) return NextResponse.json({ message: "Servidor não encontrado" }, { status: 404 });
     return NextResponse.json(servidor);
 }
@@ -22,7 +22,7 @@ export async function PUT(request, { params }) {
 
   const data = await request.json();
   const servidor = await prisma.servidores.update({
-    where: { id: parseInt(params.id) },
+    where: { id: parseInt((await params).id) },
     data,
   });
   return NextResponse.json(servidor);
@@ -35,6 +35,6 @@ export async function DELETE(request, { params }) {
       return NextResponse.json({ message: "Acesso negado" }, { status: 403 });
   }
   
-  await prisma.servidores.delete({ where: { id: parseInt(params.id) } });
+  await prisma.servidores.delete({ where: { id: parseInt((await params).id) } });
   return new NextResponse(null, { status: 204 });
 }

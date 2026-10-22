@@ -15,7 +15,7 @@ export async function GET() {
 // POST /api/licitacoes -> Cria uma nova licitação
 export async function POST(request) {
   const session = await getServerSession(authOptions);
-  if (session?.user?.role === 'publicador') { // Exemplo de regra de acesso
+  if (!session || session.user.role === 'publicador') { // Exemplo de regra de acesso
       return NextResponse.json({ message: "Acesso negado" }, { status: 403 });
   }
 

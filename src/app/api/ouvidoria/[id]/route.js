@@ -9,7 +9,7 @@ export async function GET(request, { params }) {
     if (!session) return NextResponse.json({ message: "Não autorizado" }, { status: 401 });
   
     const solicitacao = await prisma.ouvidoria_solicitacoes.findUnique({
-        where: { id: parseInt(params.id) },
+        where: { id: parseInt((await params).id) },
         include: { secretaria_destino: { select: { nome: true } } },
     });
 
@@ -20,7 +20,7 @@ export async function GET(request, { params }) {
 // PUT /api/ouvidoria/{id} -> Atualiza o status de uma solicitação
 export async function PUT(request, { params }) {
   const session = await getServerSession(authOptions);
-  if (session?.user?.role === 'publicador') {
+  if (!session || session.user.role === 'publicador') {
       return NextResponse.json({ message: "Acesso negado" }, { status: 403 });
   }
 
@@ -30,7 +30,7 @@ export async function PUT(request, { params }) {
   }
 
   const solicitacao = await prisma.ouvidoria_solicitacoes.update({
-    where: { id: parseInt(params.id) },
+    where: { id: parseInt((await params).id) },
     data: { status },
   });
   return NextResponse.json(solicitacao);

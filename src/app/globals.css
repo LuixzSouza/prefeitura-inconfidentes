@@ -127,3 +127,10 @@ body {
 .animate-loading-fill {
   animation: loading-fill 1.8s ease-in-out infinite;
 }
+/* Modo de alto contraste (ativado pela barra de acessibilidade) */
+html.alto-contraste {
+  filter: contrast(1.35) saturate(0.6);
+}
+html.alto-contraste a {
+  text-decoration: underline;
+}
