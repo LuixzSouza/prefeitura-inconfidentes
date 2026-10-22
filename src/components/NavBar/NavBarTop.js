@@ -5,15 +5,15 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 
 const icons_social = [
-  { icon: "zap", link: "#" },
-  { icon: "youtube", link: "#" },
-  { icon: "instagram", link: "#" },
-  { icon: "facebook", link: "#" },
+  { icon: "zap", link: "https://wa.me/5535998487025" },
+  { icon: "youtube", link: "https://www.youtube.com/watch?v=TBy_ZZ7zs4Q" },
+  { icon: "instagram", link: "https://www.instagram.com/prefeiturainconfidentes/" },
+  { icon: "facebook", link: "https://www.facebook.com/prefeituradeinconfidentes/" },
 ];
 
 const infoPref = [
   { icon: "local", info: "Álvares Maciel, 190", link: "https://www.google.com/maps/search/?api=1&query=Rua+Engenheiro+%C3%81lvares+Maciel+190+Inconfidentes+MG" },
-  { icon: "clock", info: "12h–18h", link: "#" },
+  { icon: "clock", info: "12h–18h", link: "/municipio/telefones-uteis" },
   { icon: "phone", info: "(35) 3464–1015", link: "tel:+553534641015" },
 ];
 
@@ -142,7 +142,7 @@ export function Navbartop() {
         {/* Redes sociais */}
         <div className="flex items-center gap-2">
             {icons_social.map((item, index) => (
-            <a key={index} href={item.link} className="relative group">
+            <a key={index} href={item.link} target="_blank" rel="noopener noreferrer" aria-label={item.icon} className="relative group">
                 <Image
                 width={16}
                 height={16}

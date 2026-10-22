@@ -18,6 +18,7 @@ import {
   Briefcase
 } from 'lucide-react';
 import Link from 'next/link';
+import { DocumentoLink } from '@/components/ui/DocumentoLink';
 
 // Função que busca os dados detalhados
 async function getDepartamento(slug) {
@@ -280,14 +281,14 @@ const SecoesEspeciais = ({ secoes }) => (
         {secao.tipo === 'lista-documentos' && (
           <div className="space-y-2">
             {secao.itens.map((item, j) => (
-              <a
+              <DocumentoLink
                 key={j}
-                href={item.url}
+                url={item.url}
                 className="flex items-center gap-2 p-3 bg-gray-50 rounded-lg hover:bg-gray-100"
               >
                 <FileText size={16} className="text-emerald-500" />
                 {item.texto}
-              </a>
+              </DocumentoLink>
             ))}
           </div>
         )}
@@ -301,14 +302,14 @@ const SecoesEspeciais = ({ secoes }) => (
                 </h3>
                 <div className="space-y-2">
                   {sub.itens.map((item, l) => (
-                    <a
+                    <DocumentoLink
                       key={l}
-                      href={item.url}
+                      url={item.url}
                       className="flex items-center gap-2 p-3 bg-gray-50 rounded-lg hover:bg-gray-100"
                     >
                       <FileText size={16} className="text-emerald-500" />
                       {item.texto}
-                    </a>
+                    </DocumentoLink>
                   ))}
                 </div>
               </div>

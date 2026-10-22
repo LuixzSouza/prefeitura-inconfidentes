@@ -9,6 +9,14 @@ A aplicação é **full-stack** e tem duas partes:
 - um **site público** para o cidadão, com notícias, publicações oficiais, transparência e Ouvidoria online;
 - um **painel administrativo (CMS)**, com controle de acesso por perfil, para a equipe da prefeitura gerenciar todo o conteúdo.
 
+## 📸 Telas
+
+| Home (desktop) | Celular: home, Ouvidoria e notícia |
+| --- | --- |
+| <img src="docs/screenshots/home-desktop.png" width="420" alt="Home do portal"> | <img src="docs/screenshots/mobile.png" width="420" alt="Versão mobile"> |
+
+<img src="docs/screenshots/noticias.png" alt="Página de notícias">
+
 ---
 
 ## ✨ Funcionalidades

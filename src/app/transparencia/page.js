@@ -5,6 +5,7 @@
 import React, { useState, useMemo } from 'react';
 import { Header } from '@/components/NavBar/Header';
 import { Footer } from '@/components/sections/Footer';
+import { DocumentoLink } from '@/components/ui/DocumentoLink';
 import { 
   DollarSign, Scale, Gavel, FileText, Users, Home, Search, BarChart2,
   FileBadge, Shield, Briefcase, Building, HardHat, Car, BookOpen, HandHeart,
@@ -202,14 +203,13 @@ const CategoryCard = ({ category }) => (
     </header>
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-gray-200">
       {category.links.map((link) => (
-        <a 
-          key={link.titulo} 
-          href={link.url}
-          {...(link.url.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-          className="p-4 bg-white hover:bg-emerald-50 text-gray-700 hover:text-emerald-800 transition-colors flex items-center"
+        <DocumentoLink
+          key={link.titulo}
+          url={link.url}
+          className="p-4 bg-white hover:bg-emerald-50 text-gray-700 hover:text-emerald-800 transition-colors flex items-center gap-2"
         >
           {link.titulo}
-        </a>
+        </DocumentoLink>
       ))}
     </div>
   </section>

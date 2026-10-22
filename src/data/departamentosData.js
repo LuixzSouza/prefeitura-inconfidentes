@@ -228,8 +228,8 @@ export const departamentosData = [
     ],
     secoesEspeciais: [
         { titulo: 'Acesso Rápido', tipo: 'lista-documentos', itens: [
-            { texto: 'Acesse as licitações', url: '#' },
-            { texto: 'Acesse as compras diretas', url: '#' }
+            { texto: 'Acesse as licitações', url: '/publicacoes-oficiais/licitacoes' },
+            { texto: 'Acesse as compras diretas', url: '/publicacoes-oficiais/compras-diretas' }
         ] }
     ]
   },
