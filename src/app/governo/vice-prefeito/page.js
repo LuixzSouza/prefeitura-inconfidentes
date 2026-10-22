@@ -16,7 +16,7 @@ import {
 // --- DADOS DO VICE-PREFEITO ---
 // Insira o caminho para a foto do vice-prefeito aqui.
 // A foto deve estar na pasta /public do seu projeto. Ex: /fotos/vice-prefeito.jpg
-const fotoVicePrefeitoUrl = '/images/avatar-placeholder.svg'; // '/fotos/decio-bonamichi-junior.jpg'
+const fotoVicePrefeitoUrl = '/images/site/CNV2024INC00224-683x1024.jpg'; // '/fotos/decio-bonamichi-junior.jpg'
 
 const VicePrefeitoPage = () => {
   return (

@@ -19,7 +19,7 @@ import {
 // --- DADOS DO PREFEITO ---
 // Insira o caminho para a foto do prefeito aqui.
 // A foto deve estar na pasta /public do seu projeto. Ex: /fotos/prefeito.jpg
-const fotoPrefeitoUrl = '/images/avatar-placeholder.svg'; // '/fotos/claudinei-tunes-pereira.jpg'
+const fotoPrefeitoUrl = '/images/site/CNV2024INC00160-1-683x1024.jpg'; // '/fotos/claudinei-tunes-pereira.jpg'
 
 const PrefeitoPage = () => {
   return (

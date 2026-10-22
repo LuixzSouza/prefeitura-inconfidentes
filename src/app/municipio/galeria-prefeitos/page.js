@@ -16,7 +16,7 @@ const dadosPrefeitos = [
     nome: 'Claudinei Tunes Pereira',
     mandato: '2025 - 2028',
     partido: 'Partido Político', // Exemplo de campo adicional
-    fotoUrl: '/images/avatar-placeholder.svg', // '/fotos/prefeito-atual.jpg'
+    fotoUrl: '/images/site/CNV2024INC00160-1-683x1024.jpg', // '/fotos/prefeito-atual.jpg'
     atual: true,
   },
   {
