@@ -394,7 +394,7 @@ const PublicacoesListPage = () => {
     return (
         <div className="bg-gray-50 min-h-screen flex flex-col">
             <Header/> 
-            <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <main className="flex-grow w-full max-w-grid mx-auto px-4 sm:px-6 lg:px-8 py-12">
                 <div className="flex flex-wrap justify-between items-center gap-4 mb-8">
                     <h1 className="text-3xl lg:text-4xl font-bold text-gray-800 tracking-tight">{pageTitle}</h1>
                 </div>

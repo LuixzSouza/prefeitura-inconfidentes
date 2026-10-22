@@ -1,7 +1,7 @@
 import { twMerge } from "tailwind-merge"
 
 export function ContainerGrid({ children, className = "" }) {
-    const defaultClass = "w-full max-w-grid mx-auto px-4";
+    const defaultClass = "w-full max-w-grid mx-auto px-4 sm:px-6 lg:px-8";
     const combinedClasses = twMerge(defaultClass, className)
     return (
         <div className={combinedClasses}  >

@@ -1,60 +1,60 @@
-// Notícias de demonstração, exibidas quando o banco de dados ainda não
-// possui notícias publicadas (ou não está disponível no ambiente).
+// Notícias de demonstração (extraídas do site oficial da prefeitura), exibidas
+// quando o banco de dados ainda não possui notícias publicadas ou não está disponível.
 export const noticiasDemo = [
   {
-    slug: 'prefeitura-abre-vaga-para-fonoaudiologo',
-    titulo: 'Prefeitura de Inconfidentes abre vaga para Fonoaudiólogo(a)',
-    subtitulo: 'A Prefeitura Municipal de Inconfidentes, por meio da Secretaria Municipal de Saúde, está em busca de profissionais para compor sua equipe.',
-    conteudo: 'A Prefeitura Municipal de Inconfidentes, por meio da Secretaria Municipal de Saúde, está em busca de profissionais de Fonoaudiologia para atuar na rede municipal.\n\nOs interessados devem comparecer à Secretaria Municipal de Saúde portando currículo atualizado e documentos pessoais, de segunda a sexta-feira, das 12h às 16h.\n\nMais informações podem ser obtidas pelo telefone da Secretaria ou presencialmente.',
-    imagem_destaque: '/images/noticeds/vaga-fonoaudiologo.jpg',
-    data_publicacao: '2025-06-25T12:00:00.000Z',
+    "slug": "prefeitura-de-inconfidentes-amplia-cadastro-de-empresas-para-o-programa-adote-uma-arvore",
+    "titulo": "Prefeitura de Inconfidentes amplia cadastro de empresas para o Programa “Adote uma Árvore”",
+    "subtitulo": "Iniciativa busca fortalecer a preservação ambiental, valorizar a identidade do município e incentivar a participação do setor empresarial na transformação dos espaços públicos",
+    "conteudo": "Iniciativa busca fortalecer a preservação ambiental, valorizar a identidade do município e incentivar a participação do setor empresarial na transformação dos espaços públicos\n\nA Prefeitura de Inconfidentes está ampliando e atualizando o cadastro de empresas interessadas em participar do Programa “Adote uma Árvore”, iniciativa que une preservação ambiental, valorização cultural e incentivo ao turismo local.\n\nPor meio do programa, empresas podem adotar uma árvore e contribuir para tornar os espaços públicos do município ainda mais bonitos, coloridos e acolhedores. A iniciativa também possibilita a participação do setor empresarial na valorização da identidade de Inconfidentes, aproximando empresas, comunidade e poder público em uma ação de impacto positivo para a cidade.\n\nAlém da contribuição para a arborização e qualificação dos espaços urbanos, o programa valoriza elementos que fazem parte da identidade cultural e turística de Inconfidentes. A proposta também oferece às empresas participantes uma oportunidade de associar sua marca a uma iniciativa de responsabilidade socioambiental e de valorização do município.\n\nAs empresas interessadas em participar podem realizar sua inscrição presencialmente na Prefeitura de Inconfidentes ou online, por meio do formulário:\n\nA Prefeitura convida as empresas do município a fazerem parte dessa iniciativa e ajudarem a construir uma Inconfidentes mais verde, bonita, colorida e cheia de identidade.[CONFIRA O EDITAL]",
+    "imagem_destaque": "/images/noticias/prefeitura-de-inconfidentes-amplia-cadastro-de-empresas-para.jpg",
+    "data_publicacao": "2026-09-21T12:00:00.000Z"
   },
   {
-    slug: 'edital-lanchonete-da-rodoviaria',
-    titulo: 'Edital para concessão da Lanchonete da Rodoviária é publicado',
-    subtitulo: 'Está aberto o Edital de Concorrência Pública nº 001/2025, referente à concessão onerosa da lanchonete.',
-    conteudo: 'A Prefeitura informa que está aberto o Edital de Concorrência Pública nº 001/2025, referente à concessão onerosa de uso do espaço da Lanchonete da Rodoviária Municipal.\n\nO edital completo, com todas as condições de participação, está disponível na área de Publicações Oficiais do portal.',
-    imagem_destaque: '/images/bgTemperature.jpg',
-    data_publicacao: '2025-06-25T11:00:00.000Z',
+    "slug": "prefeitura-abre-inscricoes-para-bolsas-culturais-da-politica-nacional-aldir-blanc",
+    "titulo": "Prefeitura abre inscrições para bolsas culturais da Política Nacional Aldir Blanc",
+    "subtitulo": "Edital disponibiliza R$ 59,2 mil para projetos de valorização, preservação e difusão da cultura local",
+    "conteudo": "Edital disponibiliza R$ 59,2 mil para projetos de valorização, preservação e difusão da cultura local\n\nA Prefeitura de Inconfidentes, por meio da área responsável pela Cultura e Turismo, publicou o Edital de Chamamento Público nº 04/2026/CULT, referente ao segundo ciclo da Política Nacional Aldir Blanc de Fomento à Cultura (PNAB). A iniciativa prevê a destinação de R$ 59,2 mil em recursos para o fomento de projetos culturais desenvolvidos no município.\n\nO edital tem como objetivo incentivar a produção cultural e apoiar iniciativas de relevância para a preservação e valorização da cultura local. Os recursos serão destinados por meio de duas bolsas culturais: uma no valor de R$ 53,2 mil, voltada a grupos musicais em reestruturação que ofereçam ações de ensino e preservação do patrimônio cultural para a comunidade; e outra, de R$ 6 mil, destinada a grupos que desenvolvam ações de musicalização para crianças e jovens.\n\nPodem participar agentes culturais que atendam aos critérios estabelecidos no edital, incluindo pessoas físicas, Microempreendedores Individuais (MEIs), pessoas jurídicas com ou sem fins lucrativos e coletivos ou grupos culturais sem CNPJ, representados por pessoa física. Entre os requisitos, está a comprovação de residência no município há pelo menos 12 meses.\n\nAs inscrições estão abertas até 8 de setembro de 2026. Após o período de inscrição, os projetos passarão pelas etapas de avaliação, habilitação e formalização do Termo de Bolsa Cultural. A previsão é de divulgação do resultado final após recursos em 17 de setembro, com publicação oficial a partir de 21 de setembro e pagamento das bolsas a partir de 1º de outubro de 2026.\n\nA iniciativa integra as ações da Política Nacional Aldir Blanc de Fomento à Cultura, criada pela Lei Federal nº 14.399/2022, que estabelece uma política continuada de financiamento público à cultura e fortalece a parceria entre União, estados e municípios e a sociedade civil do setor cultural.",
+    "imagem_destaque": "/images/noticias/prefeitura-abre-inscricoes-para-bolsas-culturais-da-politica.jpg",
+    "data_publicacao": "2026-08-28T12:00:00.000Z"
   },
   {
-    slug: 'edital-lanchonete-cancha-de-bocha',
-    titulo: 'Aberto edital para concessão da Lanchonete da Cancha de Bocha',
-    subtitulo: 'Edital de Concorrência Pública nº 002/2025 para a concessão onerosa do espaço.',
-    conteudo: 'A Prefeitura informa que está aberto o Edital de Concorrência Pública nº 002/2025, para a concessão onerosa da Lanchonete da Cancha de Bocha.\n\nOs interessados podem consultar o edital na área de Publicações Oficiais.',
-    imagem_destaque: '/images/bgTemperature.jpg',
-    data_publicacao: '2025-06-25T10:00:00.000Z',
+    "slug": "inconfidentes-supera-media-nacional-em-qualidade-de-vida",
+    "titulo": "Inconfidentes supera média nacional em qualidade de vida",
+    "subtitulo": "Inconfidentes conquistou um importante resultado no IPS Brasil 2026 (Índice de Progresso Social), alcançando 63,64 pontos, acima da média nacional, de 63,40 pontos.",
+    "conteudo": "Inconfidentes conquistou um importante resultado no IPS Brasil 2026 (Índice de Progresso Social), alcançando 63,64 pontos, acima da média nacional, de 63,40 pontos.\n\nInconfidentes conquistou um importante resultado no IPS Brasil 2026 (Índice de Progresso Social), alcançando 63,64 pontos, acima da média nacional, de 63,40 pontos.\n\nO índice avalia áreas como saúde, educação, segurança, moradia e meio ambiente, demonstrando o avanço do município na promoção da qualidade de vida da população.\n\nO resultado reforça o compromisso da Prefeitura de Inconfidentes com investimentos em serviços públicos, infraestrutura e políticas que contribuem para o desenvolvimento da cidade, consolidando um trabalho voltado ao bem-estar e à construção de um futuro cada vez melhor para todos.\n\nO Portal da Prefeitura utiliza cookies para melhorar a sua experiência, de acordo com a nossa Política de Privacidade, ao continuar navegando, você concorda com estas condições.",
+    "imagem_destaque": "/images/noticias/inconfidentes-supera-media-nacional-em-qualidade-de-vida.jpg",
+    "data_publicacao": "2026-07-22T12:00:00.000Z"
   },
   {
-    slug: 'concurso-de-cafes-especiais',
-    titulo: '1º Concurso de Cafés Especiais valoriza produtores e promove cultura local',
-    subtitulo: 'Evento reuniu produtores da região e destacou a qualidade do café de Inconfidentes.',
-    conteudo: 'O 1º Concurso de Cafés Especiais de Inconfidentes reuniu produtores rurais de todo o município, valorizando a produção local e fortalecendo a cultura cafeeira da região.',
-    imagem_destaque: '/images/noticeds/noticed-1.png',
-    data_publicacao: '2025-06-20T12:00:00.000Z',
+    "slug": "credenciamento-para-a-feira-de-moda-circular-esta-com-inscricoes-abertas-em-inconfidentes",
+    "titulo": "Credenciamento para a Feira de Moda Circular está com inscrições abertas em Inconfidentes",
+    "subtitulo": "A iniciativa tem como objetivo incentivar a economia circular, promover o consumo consciente e fortalecer o empreendedorismo local, oferecendo um espaço para que artesãos, brechós e empreendedores do município possam expor e comercializar...",
+    "conteudo": "A iniciativa tem como objetivo incentivar a economia circular, promover o consumo consciente e fortalecer o empreendedorismo local, oferecendo um espaço para que artesãos, brechós e empreendedores do município possam expor e comercializar seus produtos, contribuindo para a geração de renda e para o desenvolvimento sustentável de Inconfidentes.\n\nA Prefeitura de Inconfidentes, por meio dos Departamentos de Agricultura e Gestão Ambiental e de Indústria, Comércio, Turismo e Cultura, informa que estão abertas as inscrições para o credenciamento de expositores da Feira de Moda Circular.A iniciativa tem como objetivo incentivar a economia circular, promover o consumo consciente e fortalecer o empreendedorismo local, oferecendo um espaço para que artesãos, brechós e empreendedores do município possam expor e comercializar seus produtos, contribuindo para a geração de renda e para o desenvolvimento sustentável de Inconfidentes.Além de estimular a reutilização de peças e materiais, a Feira de Moda Circular busca conscientizar a população sobre a importância de práticas mais responsáveis de consumo, valorizando a criatividade, a sustentabilidade e o reaproveitamento como ferramentas para impulsionar a economia local.As inscrições estarão abertas entre os dias 08 e 15 de julho de 2026 e deverão ser realizadas conforme as orientações disponíveis no edital de credenciamento.\n\nA Prefeitura de Inconfidentes convida todos os interessados a participarem desta iniciativa, que une empreendedorismo, inovação e responsabilidade ambiental, fortalecendo a economia do município e incentivando práticas cada vez mais sustentáveis para toda a comunidade.\n\nO Portal da Prefeitura utiliza cookies para melhorar a sua experiência, de acordo com a nossa Política de Privacidade, ao continuar navegando, você concorda com estas condições.",
+    "imagem_destaque": "/images/noticias/credenciamento-para-a-feira-de-moda-circular-esta-com-inscri.jpg",
+    "data_publicacao": "2026-07-08T12:00:00.000Z"
   },
   {
-    slug: 'primeira-tratorada-de-inconfidentes',
-    titulo: '1ª Tratorada de Inconfidentes é um sucesso e marca história no agronegócio local',
-    subtitulo: 'Desfile reuniu dezenas de máquinas agrícolas pelas ruas da cidade.',
-    conteudo: 'A 1ª Tratorada de Inconfidentes reuniu produtores e famílias em uma grande celebração do agronegócio local.',
-    imagem_destaque: '/images/renovation-25_28.png',
-    data_publicacao: '2025-06-18T12:00:00.000Z',
+    "slug": "prefeitura-abre-cadastramento-de-entidades-para-participacao-no-arraia-beneficente-de-inconfidentes-2026",
+    "titulo": "Prefeitura abre cadastramento de entidades para o Arraiá Beneficente de 2026",
+    "subtitulo": "As inscrições Arraiá Beneficente de Inconfidentes 2026 devem ser realizadas entre os dias 12 e 18 de maio, exclusivamente pelo site oficial da Prefeitura, via formulário online e apresentação de documentação, conforme publicado em Edital.",
+    "conteudo": "As inscrições Arraiá Beneficente de Inconfidentes 2026 devem ser realizadas entre os dias 12 e 18 de maio, exclusivamente pelo site oficial da Prefeitura, via formulário online e apresentação de documentação, conforme publicado em Edital.\n\nA Prefeitura de Inconfidentes, por meio do Departamento Municipal de Indústria, Comércio, Turismo e Cultura, abriu o cadastramento de entidades interessadas em participar da Praça de Alimentação do Arraiá Beneficente de Inconfidentes 2026.As inscrições devem ser realizadas entre os dias 12 e 18 de maio, exclusivamente pelo site oficial da Prefeitura, via formulário online e apresentação de documentação, conforme publicado em Edital. Poderão participar Organizações da Sociedade Civil (OSC), Organizações Sociais (OS), entidades beneficentes sem fins lucrativos e entidades escolares públicas do município.O evento acontecerá nos dias 12, 13 e 14 de junho de 2026, na Praça Tiradentes, reunindo gastronomia típica, apresentações culturais e ações beneficentes em uma das festas mais tradicionais da cidade.\n\n📄 O edital completo e o formulário de inscrição estão disponíveis em:www.inconfidentes.mg.gov.brClique aqui para baixar o edital\n\nO Portal da Prefeitura utiliza cookies para melhorar a sua experiência, de acordo com a nossa Política de Privacidade, ao continuar navegando, você concorda com estas condições.",
+    "imagem_destaque": "/images/noticias/prefeitura-abre-cadastramento-de-entidades-para-participacao.jpg",
+    "data_publicacao": "2026-05-12T12:00:00.000Z"
   },
   {
-    slug: 'iptu-2025-vence-em-10-de-julho',
-    titulo: 'IPTU 2025 vence em 10 de julho! Contribua com o desenvolvimento de Inconfidentes',
-    subtitulo: 'Pagamento em dia garante investimentos em serviços públicos.',
-    conteudo: 'O vencimento da cota única do IPTU 2025 é 10 de julho. As guias podem ser retiradas no setor de Tributos da Prefeitura.',
-    imagem_destaque: '/images/renovation-25_28.png',
-    data_publicacao: '2025-06-15T12:00:00.000Z',
+    "slug": "prefeitura-de-inconfidentes-realiza-entrega-inedita-de-material-escolar-personalizado",
+    "titulo": "Prefeitura de Inconfidentes realiza entrega inédita de material escolar personalizado",
+    "subtitulo": "A iniciativa beneficia diretamente toda a comunidade escolar. Os alunos passam a contar com mais organização, incentivo e melhores condições de aprendizagem, enquanto os professores ganham mais suporte e qualidade no planejamento das aulas.",
+    "conteudo": "A iniciativa beneficia diretamente toda a comunidade escolar. Os alunos passam a contar com mais organização, incentivo e melhores condições de aprendizagem, enquanto os professores ganham mais suporte e qualidade no planejamento das aulas.\n\nA Prefeitura Municipal de Inconfidentes realizou, pela primeira vez na história do município, a entrega de material escolar personalizado para alunos e professores da rede municipal de ensino.Foram distribuídas agendas, apostilas e livros desenvolvidos especialmente para atender à realidade das salas de aula, contribuindo para o fortalecimento do ensino e tornando o aprendizado mais eficiente.A iniciativa beneficia diretamente toda a comunidade escolar. Os alunos passam a contar com mais organização, incentivo e melhores condições de aprendizagem, enquanto os professores ganham mais suporte e qualidade no planejamento das aulas.A ação reforça o compromisso da administração municipal com a educação, investindo em recursos que fazem a diferença no dia a dia das escolas e no futuro dos estudantes de Inconfidentes.\n\nO Portal da Prefeitura utiliza cookies para melhorar a sua experiência, de acordo com a nossa Política de Privacidade, ao continuar navegando, você concorda com estas condições.",
+    "imagem_destaque": "/images/noticias/prefeitura-de-inconfidentes-realiza-entrega-inedita-de-mater.jpg",
+    "data_publicacao": "2026-04-30T12:00:00.000Z"
   },
   {
-    slug: 'seminario-de-empreendedorismo-e-inovacao',
-    titulo: 'Save the Date: 1º Seminário de Empreendedorismo e Inovação acontece em 1º de julho',
-    subtitulo: 'Evento gratuito voltado a empreendedores e estudantes.',
-    conteudo: 'O 1º Seminário de Empreendedorismo e Inovação de Inconfidentes acontece em 1º de julho, com palestras e oficinas gratuitas.',
-    imagem_destaque: '/images/renovation-25_28.png',
-    data_publicacao: '2025-06-10T12:00:00.000Z',
-  },
+    "slug": "pelo-segundo-ano-consecutivo-inconfidentes-e-ouro-no-selo-nacional-de-compromisso-com-a-alfabetizacao",
+    "titulo": "Pelo segundo ano consecutivo, Inconfidentes é OURO no Selo Nacional de Compromisso com a Alfabetização",
+    "subtitulo": "Inconfidentes reafirma seu lugar entre as cidades com educação pública de referência na região. Pelo segundo ano consecutivo, o município conquista a categoria OURO no Selo Nacional de Compromisso com a Alfabetização, resultado que...",
+    "conteudo": "Inconfidentes reafirma seu lugar entre as cidades com educação pública de referência na região. Pelo segundo ano consecutivo, o município conquista a categoria OURO no Selo Nacional de Compromisso com a Alfabetização, resultado que demonstra continuidade, seriedade e maturidade das políticas educacionais.A categoria ouro está vinculada ao alcance da meta do Indicador Criança Alfabetizada (ICA), que mede se as crianças estão aprendendo a ler e escrever na idade certa. Mais do que um reconhecimento simbólico, o selo funciona como um importante instrumento de autoavaliação, acompanhando o fortalecimento das ações pedagógicas e a recomposição das aprendizagens no pós-pandemia.Esse resultado consolida Inconfidentes como um município que planeja, executa e acompanha suas políticas públicas de alfabetização, garantindo que nenhuma criança fique para trás e que a base educacional seja sólida desde os primeiros anos.O reconhecimento é fruto do trabalho do Departamento Municipal de Educação, da dedicação dos professores, do empenho dos alunos e do apoio de todos os colaboradores que constroem a educação todos os dias.Investir em alfabetização é investir em futuro, desenvolvimento social e qualidade de vida. Crianças bem alfabetizadas têm mais oportunidades, melhor desempenho escolar e mais chances de transformar sua própria realidade e a da comunidade.\n\nO Portal da Prefeitura utiliza cookies para melhorar a sua experiência, de acordo com a nossa Política de Privacidade, ao continuar navegando, você concorda com estas condições.",
+    "imagem_destaque": "/images/noticias/pelo-segundo-ano-consecutivo-inconfidentes-e-ouro-no-selo-na.jpg",
+    "data_publicacao": "2026-02-10T12:00:00.000Z"
+  }
 ];

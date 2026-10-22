@@ -27,7 +27,7 @@ export default function AgendaPrefeitoPage() {
   return (
     <main className="bg-gray-50 flex-1">
         <Header />
-      <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-grid mx-auto py-12 px-4 sm:px-6 lg:px-8">
         
         {/* Cabeçalho da Página */}
         <div className="pb-8 border-b border-gray-200 mb-8">

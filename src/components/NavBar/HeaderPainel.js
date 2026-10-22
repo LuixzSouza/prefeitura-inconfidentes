@@ -11,7 +11,7 @@ export function HeaderPainel() {
     return(
         <>
             <header className="bg-white shadow-sm sticky top-0 z-20">
-                <div className="flex justify-between items-center py-3 container mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="flex justify-between items-center py-3 w-full max-w-grid mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex items-center gap-3">
                         <LayoutDashboard className="text-emerald-600" />
                         <h1 className="text-xl font-bold text-gray-800">Painel Administrativo</h1>

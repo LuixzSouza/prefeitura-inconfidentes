@@ -8,7 +8,7 @@ const icons_social = [
   { icon: "zap", link: "https://wa.me/5535998487025" },
   { icon: "youtube", link: "https://www.youtube.com/watch?v=TBy_ZZ7zs4Q" },
   { icon: "instagram", link: "https://www.instagram.com/prefeiturainconfidentes/" },
-  { icon: "facebook", link: "https://www.facebook.com/prefeituradeinconfidentes/" },
+  { icon: "facebook", link: "https://www.facebook.com/prefeituramunicipalde.inconfidentes" },
 ];
 
 const infoPref = [
@@ -102,7 +102,7 @@ export function Navbartop() {
   };
 
   return (
-    <div className="relative bg-gradient-to-r from-green-800 to-green-950 text-white text-sm py-2 px-4 flex flex-wrap justify-between items-center gap-4 whitespace-nowrap z-20">
+    <div className="relative bg-gradient-to-r from-green-800 to-green-950 text-white text-sm py-2 px-4 sm:px-6 lg:px-[max(2rem,calc((100%-80rem)/2+2rem))] flex flex-wrap justify-between items-center gap-4 whitespace-nowrap z-20">
         {/* Informações da prefeitura */}
         <div className="flex items-center gap-3">
             {infoPref.map((item, index) => (

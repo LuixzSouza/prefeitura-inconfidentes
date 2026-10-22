@@ -6,6 +6,24 @@ import { usePathname, useRouter } from 'next/navigation';
 // Ícones do Lucide React
 import { ChevronRight, Home, ArrowLeft } from 'lucide-react';
 
+// Nomes com acentuação correta para os segmentos mais comuns da URL
+const rotulos = {
+  municipio: 'Município',
+  noticias: 'Notícias',
+  'sobre-o-municipio': 'Sobre o município',
+  historia: 'História',
+  'turismo-e-lazer': 'Turismo e lazer',
+  'telefones-uteis': 'Telefones úteis',
+  'galeria-prefeitos': 'Galeria de prefeitos',
+  'publicacoes-oficiais': 'Publicações oficiais',
+  transparencia: 'Transparência',
+  'vice-prefeito': 'Vice-prefeito',
+  'licitacoes': 'Licitações',
+  'concursos-e-processos-seletivos': 'Concursos e processos seletivos',
+  'diario-oficial': 'Diário oficial',
+  resolucoes: 'Resoluções',
+};
+
 const Breadcrumbs = () => {
   const pathname = usePathname();
   const router = useRouter();
@@ -16,13 +34,13 @@ const Breadcrumbs = () => {
 
   segments.forEach((seg, idx) => {
     const href = '/' + segments.slice(0, idx + 1).join('/');
-    const label = seg.charAt(0).toUpperCase() + seg.slice(1).replace(/-/g, ' ');
+    const label = rotulos[seg] ?? seg.charAt(0).toUpperCase() + seg.slice(1).replace(/-/g, ' ');
     crumbs.push({ label, href });
   });
 
   return (
     <div className="bg-white border-b border-gray-200">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full max-w-grid mx-auto px-4 sm:px-6 lg:px-8">
         {/* Container principal com Flexbox para alinhar os itens */}
         <div className="flex items-center justify-between gap-3 py-3">
           

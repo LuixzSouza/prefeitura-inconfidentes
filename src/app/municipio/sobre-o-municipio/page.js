@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { Header } from '@/components/NavBar/Header';
 import { Footer } from '@/components/sections/Footer';
 
@@ -14,7 +15,7 @@ const SobreMunicipioPage = () => {
   return (
     <div className="bg-gray-50">
       <Header />
-      <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+      <main className="w-full max-w-grid mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
         
         {/* Título Principal */}
         <div className="text-center mb-12">
@@ -22,6 +23,10 @@ const SobreMunicipioPage = () => {
           <h1 className="mt-2 text-4xl md:text-5xl font-bold tracking-tight text-gray-800">
             Sobre o Município de Inconfidentes
           </h1>
+        </div>
+
+        <div className="relative mb-12 h-64 md:h-[28rem] w-full overflow-hidden rounded-2xl shadow-lg">
+          <Image src="/images/site/sobre-o-municipio.jpg" alt="Igreja Matriz de Inconfidentes ao pôr do sol" fill priority sizes="(min-width: 1280px) 1216px, 100vw" className="object-cover object-[center_35%]" />
         </div>
 
         {/* Card de Dados Gerais */}

@@ -40,7 +40,7 @@ export function NavBarBotHome() {
   }, [menuRef]);
 
   return (
-    <div className="absolute bottom-0 flex items-center justify-between w-full px-4 md:px-8 py-3 bg-gradient-to-t from-black/70 to-transparent z-10">
+    <div className="absolute bottom-0 flex items-center justify-between gap-4 w-full px-4 sm:px-6 lg:px-[max(2rem,calc((100%-80rem)/2+2rem))] py-3 bg-gradient-to-t from-black/70 to-transparent z-10">
       
       {/* Logo */}
       <div className="hidden md:block">

@@ -60,7 +60,7 @@ export default async function DepartamentoDetailPage(props) {
     return (
       <div className="bg-gray-50">
         <Header />
-        <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+        <main className="w-full max-w-grid mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
           <div className="bg-white rounded-2xl shadow-xl p-6 md:p-10">
             <header className="flex flex-col sm:flex-row items-start sm:items-center gap-6 border-b-2 border-gray-100 pb-6 mb-8">
               <div className="text-emerald-600 bg-emerald-100 p-4 rounded-full">
@@ -87,7 +87,7 @@ export default async function DepartamentoDetailPage(props) {
   return (
     <div className="bg-gray-50">
       <Header />
-      <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+      <main className="w-full max-w-grid mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
         <div className="bg-white rounded-2xl shadow-xl p-6 md:p-10">
           <header className="flex flex-col sm:flex-row items-start sm:items-center gap-6 border-b-2 border-gray-100 pb-6 mb-8">
             <div className="text-emerald-600 bg-emerald-100 p-4 rounded-full">

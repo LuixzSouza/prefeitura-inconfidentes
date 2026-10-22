@@ -4,9 +4,46 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { ChevronDown, Menu, X } from "lucide-react";
+import {
+  Building2,
+  ChevronDown,
+  Eye,
+  FileText,
+  Home,
+  Landmark,
+  Menu,
+  Network,
+  Newspaper,
+  X,
+} from "lucide-react";
 import Breadcrumbs from "../ui/Breadcrumbs";
 import { listNav } from "@/data/navigationData";
+
+// Ícones vetoriais da barra principal (os SVGs em /icons são imagens
+// coloridas e distorcem ao serem invertidos para o fundo verde)
+const navIcons = {
+  house: Home,
+  caderno: Newspaper,
+  municipio: Landmark,
+  governo: Building2,
+  departamento: Network,
+  publicacao_oficial: FileText,
+  transparencia: Eye,
+};
+
+const NavIcon = ({ name, size = 18 }) => {
+  const Icon = navIcons[name] ?? FileText;
+  return <Icon size={size} strokeWidth={2} aria-hidden="true" />;
+};
+
+const isRotaAtiva = (pathname, url) =>
+  url !== "#" && (pathname === url || (url !== "/" && pathname.startsWith(url + "/")));
+
+const itemClass = (ativo) => `
+  flex h-full items-center gap-2 px-3 xl:px-4 text-sm font-semibold whitespace-nowrap
+  border-b-[3px] transition-colors duration-200
+  ${ativo ? "border-white text-white" : "border-transparent text-green-50/90 hover:text-white hover:bg-green-900/60"}
+`;
 
 export function Header() {
   const pathname = usePathname();
@@ -14,7 +51,7 @@ export function Header() {
   const [menuAberto, setMenuAberto] = useState(false);
   const [submenuAberto, setSubmenuAberto] = useState(null);
 
-  // Fecha o menu mobile ao trocar de página
+  // Fecha os menus ao trocar de página
   useEffect(() => {
     setMenuAberto(false);
     setSubmenuAberto(null);
@@ -22,112 +59,80 @@ export function Header() {
 
   return (
     <>
-      <header className="sticky top-0 w-full bg-green-800 text-white z-50">
-        <nav className="relative hidden lg:flex justify-center">
-          <ul className="flex items-center gap-4 px-4 pt-3">
-            {listNav.map((item, idx) => {
-              // Caso de dropdown
-              if (item.dropdown) {
-                // Verifica se alguma das URLs filhas bate com a rota atual
-                const activeChild = item.dropdown.some(sub => sub.url === pathname);
-
+      <header className="sticky top-0 w-full bg-green-800 text-white z-50 shadow-md">
+        {/* Navegação desktop */}
+        <nav className="relative hidden lg:block" aria-label="Menu principal">
+          <ul className="mx-auto flex h-14 w-full max-w-grid items-stretch justify-center px-4 sm:px-6 lg:px-8">
+            {listNav.map((item) => {
+              if (!item.dropdown) {
                 return (
-                  <li key={idx} className="group">
-                    <button
-                      className={`
-                        flex items-center gap-2 px-3 py-2 rounded transition-colors duration-200
-                        hover:bg-green-900
-                        ${activeChild ? 'border-b-2 border-white' : 'opacity-80'}
-                      `}
-                    >
-                      <Image
-                        width={24}
-                        height={24}
-                        alt={item.linkTxt}
-                        src={`/icons/${item.icon}.svg`}
-                        className="invert"
-                      />
-                      <span className="text-xs font-semibold">{item.linkTxt}</span>
-                      <Image
-                        width={16}
-                        height={16}
-                        alt="seta"
-                        src="/icons/arrow-down.svg"
-                        className="ml-1 invert group-hover:rotate-180 transition-transform duration-300"
-                      />
-                    </button>
-
-                    <div className="
-                      absolute top-full left-0 w-full
-                      opacity-0 pointer-events-none
-                      group-hover:opacity-100 group-hover:pointer-events-auto
-                      transition-all duration-300 ease-in-out
-                      transform-origin-top
-                    ">
-                      <div className="bg-white text-gray-800 shadow-2xl">
-                        <div className="max-w-7xl mx-auto px-8 py-10">
-                          <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-8">
-                            {item.dropdown.map((sub, subIdx) => {
-                              const isSubActive = sub.url === pathname;
-                              return (
-                                <li key={subIdx} className="list-none">
-                                  <Link
-                                    href={sub.url}
-                                    className={`
-                                      flex items-start gap-4 p-3 rounded-lg transition-colors duration-200
-                                      hover:bg-gray-100
-                                      ${isSubActive ? 'bg-green-100 border-l-4 border-green-800' : ''}
-                                    `}
-                                  >
-                                    <div className="bg-green-100 p-2 rounded-md shrink-0">
-                                      <Image
-                                        width={24}
-                                        height={24}
-                                        alt={sub.title}
-                                        src={`/icons/${sub.icon}.svg`}
-                                      />
-                                    </div>
-                                    <div>
-                                      <h3 className="font-bold text-sm text-gray-900">{sub.title}</h3>
-                                      <p className="text-xs text-gray-600 mt-1">{sub.description}</p>
-                                    </div>
-                                  </Link>
-                                </li>
-                              );
-                            })}
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
+                  <li key={item.linkTxt}>
+                    <Link href={item.linkUrl} className={itemClass(isRotaAtiva(pathname, item.linkUrl))}>
+                      <NavIcon name={item.icon} />
+                      {item.linkTxt}
+                    </Link>
                   </li>
                 );
               }
 
-              // Caso sem dropdown
-              // Marca ativo se a rota for exata ou rota filha
-              const isActive =
-                pathname === item.linkUrl ||
-                (item.linkUrl !== '/' && pathname.startsWith(item.linkUrl + '/'));
+              const ativo =
+                isRotaAtiva(pathname, item.linkUrl) ||
+                item.dropdown.some((sub) => isRotaAtiva(pathname, sub.url));
 
               return (
-                <li key={idx} className="">
-                  <Link
-                    href={item.linkUrl}
-                    className={`
-                      flex items-center gap-2 px-3 py-2 rounded transition-colors duration-200
-                      hover:bg-green-900
-                      ${isActive ? 'border-b-2 border-white' : 'opacity-80'}
-                    `}
+                <li key={item.linkTxt} className="group">
+                  <button
+                    type="button"
+                    aria-haspopup="true"
+                    className={itemClass(ativo)}
                   >
-                    <Image
-                      width={24}
-                      height={24}
-                      alt={item.linkTxt}
-                      src={`/icons/${item.icon}.svg`}
-                      className="invert"
-                    />
-                    <span className="text-xs font-semibold">{item.linkTxt}</span>
-                  </Link>
+                    <NavIcon name={item.icon} />
+                    {item.linkTxt}
+                    <ChevronDown size={16} className="transition-transform duration-300 group-hover:rotate-180 group-focus-within:rotate-180" />
+                  </button>
+
+                  {/* Painel do dropdown (abre com hover ou foco do teclado) */}
+                  <div className="
+                    invisible absolute left-0 top-full w-full opacity-0 -translate-y-1
+                    transition-all duration-200 ease-out
+                    group-hover:visible group-hover:opacity-100 group-hover:translate-y-0
+                    group-focus-within:visible group-focus-within:opacity-100 group-focus-within:translate-y-0
+                  ">
+                    <div className="bg-white text-gray-800 shadow-2xl border-t-4 border-green-700">
+                      <div className="mx-auto w-full max-w-grid px-4 sm:px-6 lg:px-8 py-8">
+                        {item.linkUrl !== "#" && (
+                          <Link href={item.linkUrl} className="mb-4 inline-flex items-center gap-1 text-sm font-bold text-green-800 hover:underline">
+                            Ver tudo em {item.linkTxt} &rarr;
+                          </Link>
+                        )}
+                        <ul className="grid grid-cols-2 xl:grid-cols-4 gap-3">
+                          {item.dropdown.map((sub) => {
+                            const subAtivo = sub.url === pathname;
+                            return (
+                              <li key={sub.url}>
+                                <Link
+                                  href={sub.url}
+                                  className={`
+                                    flex h-full items-start gap-3 rounded-lg p-3 transition-colors duration-200
+                                    hover:bg-green-50
+                                    ${subAtivo ? 'bg-green-100 ring-1 ring-green-700' : ''}
+                                  `}
+                                >
+                                  <span className="shrink-0 rounded-md bg-green-100 p-2">
+                                    <Image width={24} height={24} alt="" src={`/icons/${sub.icon}.svg`} />
+                                  </span>
+                                  <span>
+                                    <span className="block text-sm font-bold text-gray-900">{sub.title}</span>
+                                    <span className="mt-0.5 block text-xs text-gray-600">{sub.description}</span>
+                                  </span>
+                                </Link>
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
                 </li>
               );
             })}
@@ -157,14 +162,19 @@ export function Header() {
                       aria-expanded={submenuAberto === item.linkTxt}
                       className="flex w-full items-center justify-between px-5 py-3 text-sm font-semibold hover:bg-green-900"
                     >
-                      {item.linkTxt}
+                      <span className="flex items-center gap-3"><NavIcon name={item.icon} />{item.linkTxt}</span>
                       <ChevronDown size={18} className={`transition-transform ${submenuAberto === item.linkTxt ? 'rotate-180' : ''}`} />
                     </button>
                     {submenuAberto === item.linkTxt && (
                       <ul className="bg-green-900">
+                        {item.linkUrl !== "#" && (
+                          <li>
+                            <Link href={item.linkUrl} className="block px-12 py-2.5 text-sm font-semibold text-white">Ver tudo</Link>
+                          </li>
+                        )}
                         {item.dropdown.map((sub) => (
                           <li key={sub.url}>
-                            <Link href={sub.url} className={`block px-8 py-2.5 text-sm ${sub.url === pathname ? 'font-bold text-white' : 'text-green-100'} hover:text-white`}>
+                            <Link href={sub.url} className={`block px-12 py-2.5 text-sm ${sub.url === pathname ? 'font-bold text-white' : 'text-green-100'} hover:text-white`}>
                               {sub.title}
                             </Link>
                           </li>
@@ -173,7 +183,8 @@ export function Header() {
                     )}
                   </>
                 ) : (
-                  <Link href={item.linkUrl} className={`block px-5 py-3 text-sm font-semibold hover:bg-green-900 ${pathname === item.linkUrl ? 'bg-green-900' : ''}`}>
+                  <Link href={item.linkUrl} className={`flex items-center gap-3 px-5 py-3 text-sm font-semibold hover:bg-green-900 ${isRotaAtiva(pathname, item.linkUrl) ? 'bg-green-900' : ''}`}>
+                    <NavIcon name={item.icon} />
                     {item.linkTxt}
                   </Link>
                 )}

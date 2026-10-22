@@ -15,7 +15,7 @@ export default function SearchPage() {
   return (
     <div className="bg-gray-50 min-h-screen">
       <Header />
-      <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+      <main className="w-full max-w-grid mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
         <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-gray-800">
           Resultados da Busca
         </h1>

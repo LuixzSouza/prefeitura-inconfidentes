@@ -28,7 +28,7 @@ const NoticiaPage = async ({ params }) => {
   return (
     <div className="bg-gray-50">
       <Header />
-      <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+      <main className="w-full max-w-grid mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
         <article className="mx-auto max-w-3xl">
           <Link href="/noticias" className="mb-6 inline-flex items-center gap-2 text-sm font-semibold text-emerald-700 hover:underline">
             <ArrowLeft size={16} /> Todas as notícias

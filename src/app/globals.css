@@ -9,6 +9,8 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-verde-claro: #7BB93A;
+  /* Largura padrão de conteúdo do portal (classe max-w-grid) */
+  --container-grid: 80rem;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }

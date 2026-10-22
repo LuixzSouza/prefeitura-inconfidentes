@@ -23,7 +23,7 @@ const socialProfiles = {
     username: 'Prefeitura de Inconfidentes',
     description: 'Página oficial da Prefeitura. Fique por dentro de todas as ações e novidades da nossa cidade.',
     profilePic: '/images/favicon.png', // Caminho para uma imagem de perfil do Facebook
-    url: 'https://www.facebook.com/prefeituradeinconfidentes/',
+    url: 'https://www.facebook.com/prefeituramunicipalde.inconfidentes',
     themeColor: 'bg-blue-600', // Azul do Facebook
     icon: '/icons/facebook.svg'
   },
@@ -31,7 +31,7 @@ const socialProfiles = {
     username: 'Prefeitura de Inconfidentes',
     description: 'Canal oficial para transmissões ao vivo, vídeos institucionais e reportagens sobre Inconfidentes.',
     profilePic: '/images/favicon.png', // Caminho para uma imagem de perfil do YouTube
-    url: 'http://googleusercontent.com/youtube.com/3',
+    url: 'https://www.youtube.com/watch?v=TBy_ZZ7zs4Q',
     themeColor: 'bg-red-600', // Vermelho do YouTube
     icon: '/icons/youtube.svg'
   }
@@ -40,44 +40,60 @@ const socialProfiles = {
 // Array de posts, agora com um campo 'href' para o link
 const allPosts = [
   {
+    src: "/images/noticias/inconfidentes-supera-media-nacional-em-qualidade-de-vida.jpg",
+    alt: "Qualidade de vida",
+    title: "Qualidade de vida",
+    description: "Inconfidentes supera a média nacional no IPS Brasil 2026.",
+    social: "Instagram",
+    href: "https://www.instagram.com/prefeiturainconfidentes/"
+  },
+  {
+    src: "/images/noticias/prefeitura-de-inconfidentes-realiza-entrega-inedita-de-mater.jpg",
+    alt: "Material escolar",
+    title: "Material escolar",
+    description: "Entrega inédita de material escolar personalizado.",
+    social: "Instagram",
+    href: "https://www.instagram.com/prefeiturainconfidentes/"
+  },
+  {
     src: "/images/site/site_4.jpg",
-    alt: "Post Instagram 1",
-    title: "Campeonato Municipal",
-    description: "Confira as últimas partidas do campeonato local.",
+    alt: "Turismo",
+    title: "Turismo",
+    description: "Conheça os caminhos e paisagens de Inconfidentes.",
     social: "Instagram",
-    href: "http://googleusercontent.com/instagram.com/p/1"
+    href: "https://www.instagram.com/prefeiturainconfidentes/"
   },
   {
-    src: "/images/site/site_6.jpg",
-    alt: "Post Instagram 2",
-    title: "Reunião com Prefeitos",
-    description: "Alinhamento de ações regionais no CISAMESP.",
-    social: "Instagram",
-    href: "http://googleusercontent.com/instagram.com/p/2"
-  },
-  {
-    src: "/images/bgTemperature.jpg",
-    alt: "Post Instagram 3",
-    title: "Esporte em Ação",
-    description: "Projeto de futebol para jovens no campo municipal.",
-    social: "Instagram",
-    href: "http://googleusercontent.com/instagram.com/p/3"
-  },
-  {
-    src: "/images/facebook_post1.jpg",
-    alt: "Post Facebook 1",
-    title: "Evento Cultural",
-    description: "Apresentação de dança no centro da cidade.",
+    src: "/images/noticias/pelo-segundo-ano-consecutivo-inconfidentes-e-ouro-no-selo-na.jpg",
+    alt: "Selo Ouro na Alfabetização",
+    title: "Selo Ouro na Alfabetização",
+    description: "Pelo segundo ano consecutivo, Inconfidentes é OURO.",
     social: "Facebook",
-    href: "http://googleusercontent.com/facebook.com/p/1"
+    href: "https://www.facebook.com/prefeituramunicipalde.inconfidentes"
   },
   {
-    src: "/images/youtube_video1.jpg",
-    alt: "Vídeo YouTube",
-    title: "Transmissão ao Vivo",
-    description: "Sessão da Câmara transmitida ao vivo.",
+    src: "/images/noticias/credenciamento-para-a-feira-de-moda-circular-esta-com-inscri.jpg",
+    alt: "Feira de Moda Circular",
+    title: "Feira de Moda Circular",
+    description: "Credenciamento aberto para artesãos e brechós.",
+    social: "Facebook",
+    href: "https://www.facebook.com/prefeituramunicipalde.inconfidentes"
+  },
+  {
+    src: "/images/noticias/prefeitura-abre-cadastramento-de-entidades-para-participacao.jpg",
+    alt: "Arraiá Beneficente",
+    title: "Arraiá Beneficente",
+    description: "Cadastramento de entidades para o Arraiá 2026.",
+    social: "Facebook",
+    href: "https://www.facebook.com/prefeituramunicipalde.inconfidentes"
+  },
+  {
+    src: "https://i.ytimg.com/vi/TBy_ZZ7zs4Q/hqdefault.jpg",
+    alt: "Vídeo institucional",
+    title: "Vídeo institucional",
+    description: "Conheça Inconfidentes em imagens.",
     social: "YouTube",
-    href: "http://googleusercontent.com/youtube.com/watch/1"
+    href: "https://www.youtube.com/watch?v=TBy_ZZ7zs4Q"
   }
 ];
 
